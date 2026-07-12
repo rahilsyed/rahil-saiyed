@@ -22,3 +22,11 @@ export const PATHS = [
     "M115,226 L115,250 L280,250 L280,250",// compute -> data
     "M220,273 L115,273 L115,320",         // data -> delivery
 ];
+export const SKILL_GROUPS = [
+  {title:"Languages", items:["JavaScript (ES6+)","TypeScript (intermediate)"]},
+  {title:"Frontend", items:["React.js","Next.js","HTML5 / CSS3","Responsive UI"]},
+  {title:"Backend", items:["Node.js","Express.js","REST APIs","GraphQL APIs","Authentication & OAuth"]},
+  {title:"Database", items:["MongoDB","Mongoose","DynamoDB"]},
+  {title:"Cloud & DevOps", items:["AWS Lambda","S3 & CloudFront","IAM & Cognito","AppSync (Amplify GraphQL)","Serverless architecture"]},
+  {title:"AI & Automation", items:["Claude AI integration","OpenAI API","Puppeteer / PDF generation"]},
+];
