@@ -60,3 +60,26 @@ export const EXPERIENCE = [
     certificatePath:"ScannedDocument.pdf"
   },
 ];
+
+export const PROJECTS = [
+  {
+    title:"Lugelo Platform", desc:"A production platform spanning AI eBook generation, interactive storybooks, VR experiences, and a full user dashboard for media management.",
+    tags:["React","Node.js","AWS","GraphQL","DynamoDB","S3","CloudFront"],
+    challenge:"Synced frontend state across long-running AI generation jobs without polling, using GraphQL subscriptions."
+  },
+  {
+    title:"AI eBook Generator", desc:"An AI workflow that generates complete HTML books through LLMs, tracks generation status, and handles failures gracefully.",
+    tags:["LLM orchestration","GraphQL Subscriptions","Prompt engineering"],
+    challenge:"Kept the UI honest during multi-minute generations — real-time status, retries, and clear failure states."
+  },
+  {
+    title:"Serverless PDF Generator", desc:"An AWS Lambda service that renders HTML, generates PDFs with headless Chromium, and delivers secure, downloadable files via S3.",
+    tags:["AWS Lambda","Puppeteer","S3","Performance"],
+    challenge:"Got headless Chromium running reliably inside Lambda's size and memory constraints."
+  },
+  {
+    title:"VR Content Module", desc:"VR model management with environment separation across development, staging and production, plus dynamic content filtering.",
+    tags:["React","Cloud assets","Environment config"],
+    challenge:"Kept dev/staging/prod content isolated while sharing one deployment pipeline."
+  },
+];
