@@ -124,7 +124,12 @@
   .tl-item.current .tl-dot{background:var(--amber); box-shadow:0 0 0 4px var(--amber-dim);}
   .tl-role-row{display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin-bottom:6px;}
   .tl-role{font-family:var(--font-display); font-size:21px; font-weight:600;}
-  .tl-badge{font-family:var(--font-mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--amber); border:1px solid var(--amber); padding:2px 8px; border-radius:10px;}
+  .tl-badge{font-family:var(--font-mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--amber); border:1px solid var(--amber); padding:2px 8px; border-radius:10px; background: none;}
+  .tl-badge:hover {
+  background: var(--amber);
+  color: white;
+  cursor: pointer;
+}
   .tl-company{font-family:var(--font-mono); font-size:13px; color:var(--cyan); margin-bottom:14px;}
   .tl-desc{color:var(--text-muted); font-size:14.5px; max-width:640px;}
   .tl-desc ul{margin-top:10px; padding-left:18px;}
