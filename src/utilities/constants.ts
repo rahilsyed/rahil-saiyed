@@ -83,3 +83,23 @@ export const PROJECTS = [
     challenge:"Kept dev/staging/prod content isolated while sharing one deployment pipeline."
   },
 ];
+
+
+export const GALLERY_ITEMS = [
+  {
+    tag:"Workplace", title:"Perception System", subtitle:"Full Stack Developer — current",
+    photos:["", "", ""],
+    back:"Wherever you shipped AI eBooks, PDF pipelines, or the desk you built it all from — swap this text for the real story behind the photos."
+  },
+  {
+    tag:"Internship", title:"Mayora Infotech", subtitle:"Backend Developer Intern",
+    photos:["", ""],
+    back:"A team photo, a certificate, and a screenshot of your first deployed API — stack all of them here."
+  },
+  {
+    tag:"Internship", title:"Adani Green Energy", subtitle:"Summer Intern",
+    photos:["", "", ""],
+    back:"Your first taste of a real engineering team. Drop in photos from the site visit, the office, and the closing presentation."
+  },
+  
+];
