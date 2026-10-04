@@ -18,9 +18,7 @@ const Gallery = () => {
             ))}
           </div>
         </Reveal>
-        <Reveal>
-          <div className="note gallery-note">Placeholder photo slots above — fill each item's <code>photos</code> array with your own image URLs (as many as you like per card) to swap in the real set.</div>
-        </Reveal>
+        
       </div>
     </section>
   );

@@ -65,22 +65,28 @@ export const PROJECTS = [
   {
     title:"Lugelo Platform", desc:"A production platform spanning AI eBook generation, interactive storybooks, VR experiences, and a full user dashboard for media management.",
     tags:["React","Node.js","AWS","GraphQL","DynamoDB","S3","CloudFront"],
-    challenge:"Synced frontend state across long-running AI generation jobs without polling, using GraphQL subscriptions."
+    challenge:"Synced frontend state, across long-running AI generation jobs without polling, using GraphQL subscriptions.",
+    link:'http://lugelo.com/',
+    image:'/projects_images/lgl-img.png'
   },
   {
-    title:"AI eBook Generator", desc:"An AI workflow that generates complete HTML books through LLMs, tracks generation status, and handles failures gracefully.",
+    title:"Monitor Mate", desc:"An AI workflow that generates complete HTML books through LLMs, tracks generation status.",
     tags:["LLM orchestration","GraphQL Subscriptions","Prompt engineering"],
-    challenge:"Kept the UI honest during multi-minute generations — real-time status, retries, and clear failure states."
+    challenge:"Kept the UI honest during multi-minute generations — real-time status, retries, and clear failure states.",
+    image:'/projects_images/monitor-mate-dashboard.png'
   },
   {
-    title:"Serverless PDF Generator", desc:"An AWS Lambda service that renders HTML, generates PDFs with headless Chromium, and delivers secure, downloadable files via S3.",
+    title:"Medisync - Doctor Appointment Booking System", desc:"A full-stack web application designed to streamline the process of booking medical appointments online.",
+    tags:["ReactJS","NodeJS","MongoDB","Express.js"],
+    challenge:"Streamlined appointment booking and scheduling by implementing role-based access, real-time availability, and efficient doctor–patient management in a responsive full-stack platform.",
+    image:'/projects_images/Medisync.png'
+  
+  },
+  {
+    title:"AI Ebooks Generator", desc:"An AWS Lambda service that renders HTML, generates PDFs with headless Chromium, and delivers secure, downloadable files via S3.",
     tags:["AWS Lambda","Puppeteer","S3","Performance"],
-    challenge:"Got headless Chromium running reliably inside Lambda's size and memory constraints."
-  },
-  {
-    title:"VR Content Module", desc:"VR model management with environment separation across development, staging and production, plus dynamic content filtering.",
-    tags:["React","Cloud assets","Environment config"],
-    challenge:"Kept dev/staging/prod content isolated while sharing one deployment pipeline."
+    challenge:"Got headless Chromium running reliably inside Lambda's size and memory constraints.",
+    image:'/projects_images/aie.png'
   },
 ];
 
@@ -88,7 +94,11 @@ export const PROJECTS = [
 export const GALLERY_ITEMS = [
   {
     tag:"Workplace", title:"Perception System", subtitle:"Full Stack Developer — current",
-    photos:["", "", ""],
+    photos: [
+      "/work_images/perception/ps1.jpeg",
+      "/work_images/perception/ps2.jpeg",
+      "/work_images/perception/ps3.jpeg"
+    ],
     back:"Wherever you shipped AI eBooks, PDF pipelines, or the desk you built it all from — swap this text for the real story behind the photos."
   },
   {
@@ -98,7 +108,7 @@ export const GALLERY_ITEMS = [
   },
   {
     tag:"Internship", title:"Adani Green Energy", subtitle:"Summer Intern",
-    photos:["", "", ""],
+    photos:["/work_images/adani/ada2.jpeg","/work_images/adani/ada1.jpeg", "/work_images/adani/ada3.jpeg", "/work_images/adani/ada4.jpeg", "/work_images/adani/ada5.jpeg", "/work_images/adani/ada6.jpeg","/work_images/adani/ada7.jpeg"],
     back:"Your first taste of a real engineering team. Drop in photos from the site visit, the office, and the closing presentation."
   },
   
