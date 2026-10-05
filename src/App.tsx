@@ -1,22 +1,16 @@
-import './App.css'
-import Experience from './components/Experience/Experience'
-import Gallery from './components/Gallery/Gallery'
-import Hero from './components/Hero/Hero'
-import Navbar from './components/Navbar/Navbar'
-import Projects from './components/Projects/Projects'
-import Skills from './components/Skills/Skills'
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./App.css";
+import Home from "./Pages/Home";
 function App() {
-
   return (
     <>
-    <Navbar />
-    <Hero/>
-    <Skills />
-    <Experience />
-    <Projects />
-    <Gallery />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </BrowserRouter>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
