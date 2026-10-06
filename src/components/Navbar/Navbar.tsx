@@ -1,7 +1,10 @@
+import { useTheme } from "../../hooks/useTheme"
 import { CONSTANTS } from "../../utilities/constants"
 
 const Navbar = () => {
-
+    const {theme , setTheme}= useTheme();
+    console.log("hwllop",theme , setTheme);
+    
     return (
         <header className="nav">
             <div className="wrap nav-inner">
