@@ -22,6 +22,7 @@
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
   body{
+    min-width:0; overflow-x:hidden;
     background:
       repeating-linear-gradient(0deg, var(--grid-line) 0px, transparent 1px, transparent 40px, var(--grid-line) 41px),
       repeating-linear-gradient(90deg, var(--grid-line) 0px, transparent 1px, transparent 40px, var(--grid-line) 41px),
@@ -36,8 +37,8 @@
   ::selection{background:var(--amber); color:#0A1628;}
   :focus-visible{outline:2px solid var(--cyan); outline-offset:3px;}
  
-  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 32px;}
-  @media (max-width:640px){ .wrap{padding:0 20px;} }
+  .wrap{max-width:var(--maxw); width:100%; margin:0 auto; padding:0 32px;}
+  @media (max-width:640px){ .wrap{padding:0 16px;} }
  
   /* ---------- crop marks ---------- */
   .crop{position:absolute; width:16px; height:16px; pointer-events:none;}
@@ -75,9 +76,10 @@
   .sheet-head{display:flex; align-items:flex-end; justify-content:space-between; gap:24px; margin-bottom:48px; border-bottom:1px solid var(--line-strong); padding-bottom:18px;}
   .sheet-num{font-family:var(--font-mono); font-size:12px; color:var(--cyan); letter-spacing:0.1em;}
   .sheet-title{font-family:var(--font-display); font-size:clamp(28px,4vw,42px); font-weight:600; letter-spacing:-0.01em; margin-top:4px;}
-  .sheet-tag{font-family:var(--font-mono); font-size:11px; color:var(--text-dim); text-align:right; letter-spacing:0.06em; text-transform:uppercase; white-space:nowrap;}
+  .sheet-tag{font-family:var(--font-mono); font-size:11px; color:var(--text-dim); text-align:right; letter-spacing:0.06em; text-transform:uppercase;}
+  @media (max-width:640px){ .sheet-head{flex-direction:column; align-items:flex-start;} .sheet-tag{text-align:left;} }
  
-  section{position:relative; padding:100px 0; border-bottom:1px dashed var(--grid-line);}
+  section{position:relative; padding:100px  0 0 0; border-bottom:1px dashed var(--grid-line);}
   section .wrap{position:relative;}
  
   .reveal{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease;}

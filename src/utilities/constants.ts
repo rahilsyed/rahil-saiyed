@@ -11,7 +11,7 @@ export const CONSTANTS = {
 }
 export const NODES = [
     { x: 40, y: 40, w: 120, h: 46, title: "CLIENT", sub: "React / Next.js" },
-    { x: 220, y: 110, w: 120, h: 46, title: "API", sub: "GraphQL" },
+    { x: 220, y: 110, w: 120, h: 46, title: "API", sub: "GraphQL / REST" },
     { x: 40, y: 180, w: 150, h: 46, title: "COMPUTE", sub: "Node.js + Lambda" },
     { x: 220, y: 250, w: 130, h: 46, title: "DATA", sub: "MongoDB / DynamoDB" },
     { x: 40, y: 320, w: 150, h: 46, title: "DELIVERY", sub: "S3 + CloudFront" },
@@ -96,7 +96,7 @@ export const GALLERY_ITEMS = [
     tag:"Workplace", title:"Perception System", subtitle:"Full Stack Developer — current",
     photos: [
       "/work_images/perception/ps1.jpeg",
-      "/work_images/perception/ps2.jpeg",
+      "/work_images/perception/ps4.jpeg",
       "/work_images/perception/ps3.jpeg"
     ],
     back:"Wherever you shipped AI eBooks, PDF pipelines, or the desk you built it all from — swap this text for the real story behind the photos."
