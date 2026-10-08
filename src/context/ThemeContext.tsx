@@ -14,7 +14,7 @@ const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
         const rootElement = document.documentElement;
         rootElement.setAttribute('data-theme', theme)
         localStorage.setItem('data-theme', theme);
-    }, [])
+    }, [theme])
     return (
         <ThemeContext.Provider value={{ theme, setTheme } as ThemeContextTypes}>
             {children}
