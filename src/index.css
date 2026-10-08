@@ -110,7 +110,7 @@
   .sheet-title{font-family:var(--font-display); font-size:clamp(28px,4vw,42px); font-weight:600; letter-spacing:-0.01em; margin-top:4px;}
   .sheet-tag{font-family:var(--font-mono); font-size:11px; color:var(--text-dim); text-align:right; letter-spacing:0.06em; text-transform:uppercase; white-space:nowrap;}
 
-  section{position:relative; padding:100px 0; border-bottom:1px dashed var(--grid-line);}
+  section{position:relative; padding:100px 0 0 0; border-bottom:1px dashed var(--grid-line);}
   section .wrap{position:relative;}
  
   .reveal{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease;}
