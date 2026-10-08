@@ -1,6 +1,6 @@
 import React from 'react';
 
-type Project = { title: string; desc: string; tags: string[]; challenge: string; link: string; image: string; };
+type Project = { title: string; desc: string; tags: string[]; challenge: string; link?: string; image: string; };
 type Props = { p: Project; index: number; };
 
 const ProjectCard = ({ p, index }: Props) => {
