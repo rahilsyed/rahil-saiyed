@@ -5,7 +5,7 @@ import useTheme from "../../hooks/useTheme";
 import { CONSTANTS } from "../../utilities/constants";
 
 const Navbar = () => {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme } = useTheme(); 
   const {language, setLanguage} = useLanguage();
   console.log(language, setLanguage);
   
