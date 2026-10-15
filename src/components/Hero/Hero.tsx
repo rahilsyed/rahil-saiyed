@@ -1,8 +1,13 @@
+import useLanguage from '../../hooks/useLanguage'
 import { Reveal } from '../../hooks/useReveal'
 import FlowDiagram from './FlowDiagram'
 
 const Hero = () => {
-return (
+    const {language} = useLanguage();
+    const isDe = language === 'de';
+    console.log("isde",isDe);
+    
+    return (
     <section id="top" className="hero">
         <div className="wrap hero-grid">
             <div>
