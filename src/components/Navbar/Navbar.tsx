@@ -1,8 +1,11 @@
+import DeutscheFlag from "../../assets/DeutscheFlag";
+import EnglandFlag from "../../assets/EnglandFlag";
 import Moon from "../../assets/Moon";
 import Sun from "../../assets/Sun";
 import useLanguage from "../../hooks/useLanguage";
 import useTheme from "../../hooks/useTheme";
 import { CONSTANTS } from "../../utilities/constants";
+import { DE, EN } from "../../utilities/language";
 
 const Navbar = () => {
   const { theme, setTheme } = useTheme(); 
@@ -13,18 +16,22 @@ const Navbar = () => {
   const handleThemeToggle = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
+  
+  const handleLangaugeToggle = () => {
+    setLanguage(language === CONSTANTS.LANGUAGE.GERMAN ? "en" : "de")
+  }
   return (
     <header className="nav">
       <div className="wrap nav-inner">
         <a href="#top" className="brand">
           <span className="dot"></span>
-          {CONSTANTS.NAV_BAR_DATA.title}
+          {isDeutsche ? EN.NAV_BAR_DATA.title : DE.NAV_BAR_DATA.title}
         </a>
         <nav className="links">
-          <a href="#systems">{CONSTANTS.NAV_BAR_DATA.systems}</a>
-          <a href="#timeline">{CONSTANTS.NAV_BAR_DATA.timeLines}</a>
-          <a href="#builds">{CONSTANTS.NAV_BAR_DATA.builds}</a>
-          <a href="#debug">Debug&nbsp;Log</a>
+          <a href="#systems">{isDeutsche ? DE.NAV_BAR_DATA.systems : EN.NAV_BAR_DATA.systems}</a>
+          <a href="#timeline">{isDeutsche ? DE.NAV_BAR_DATA.timeLines : EN.NAV_BAR_DATA.timeLines}</a>
+          <a href="#builds">{isDeutsche ? DE.NAV_BAR_DATA.builds : EN.NAV_BAR_DATA.builds}</a>
+          <a href="#debug">{isDeutsche ?  `Debug-Protokoll` :`Debug Log`}</a>
         </nav>
         <button
           className="theme-toggle"
@@ -37,6 +44,16 @@ const Navbar = () => {
           title={isLight ? "Switch to dark theme" : "Switch to light theme"}
         >
           <span className="knob">{isLight ? <Moon /> : <Sun />}</span>
+        </button>
+        <button
+          className="lang-toggle"
+          onClick={handleLangaugeToggle}
+          role="switch"
+          aria-checked={isDeutsche}
+          aria-label={isDeutsche ? "Switch to English" : "Switch to Deutsche"}
+          title={isDeutsche ? "Switch to English" : "Switch to Deutsche"}
+        >
+          <span className="knob">{isDeutsche ? <DeutscheFlag /> : <EnglandFlag />}</span>
         </button>
         <a href="#contact" className="nav-cta">
           {CONSTANTS.NAV_BAR_DATA.contact}

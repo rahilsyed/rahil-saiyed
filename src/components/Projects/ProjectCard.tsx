@@ -1,9 +1,10 @@
 import React from 'react';
 
 type Project = { title: string; desc: string; tags: string[]; challenge: string; link?: string; image: string; };
-type Props = { p: Project; index: number; };
+type Translations = { challengeLabel: string; backHint: string; confidential: string; };
+type Props = { p: Project; index: number; t: Translations };
 
-const ProjectCard = ({ p, index }: Props) => {
+const ProjectCard = ({ p, index, t }: Props) => {
   console.log(p);
 
   const [flipped, setFlipped] = React.useState(false);
@@ -35,7 +36,7 @@ const ProjectCard = ({ p, index }: Props) => {
           <div className="proj-idx">// {String(index + 1).padStart(2, '0')} — challenge</div>
           <div className="proj-title">{p.title}</div>
           <div className="proj-challenge">
-            <b>Challenge solved</b>
+            <b>{t.challengeLabel}</b>
             <div className="fb-desc">{p.challenge}</div>
           </div>
           {
@@ -46,11 +47,11 @@ const ProjectCard = ({ p, index }: Props) => {
               </button>
             ) : (
               <button className='tl-badge tl-badge:hover cursor-pointer'>
-                Client Confidential
+                {t.confidential}
               </button>
             )
           }
-          <div className="proj-flip-hint cursor-pointer">← Click to go back</div>
+          <div className="proj-flip-hint cursor-pointer">{t.backHint}</div>
         </div>
       </div>
     </div>

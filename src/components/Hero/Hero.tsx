@@ -1,5 +1,6 @@
 import useLanguage from '../../hooks/useLanguage'
 import { Reveal } from '../../hooks/useReveal'
+import { DE, EN } from '../../utilities/language';
 import FlowDiagram from './FlowDiagram'
 
 const Hero = () => {
@@ -27,14 +28,13 @@ const Hero = () => {
                         <span key={s}>{s}</span>
                     )}
                 </div>
+                <Reveal>
+                    <FlowDiagram />
+                </Reveal>
             </div>
-            <Reveal>
-                <FlowDiagram />
-            </Reveal>
-        </div>
-    </section>
+        </section>
 
-)
+    )
 }
 
 export default Hero

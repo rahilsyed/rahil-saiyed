@@ -1,14 +1,18 @@
+import useLanguage from '../../hooks/useLanguage'
 import { Reveal } from '../../hooks/useReveal'
 import { SKILL_GROUPS } from '../../utilities/constants'
+import { DE, EN } from '../../utilities/language'
 
 const Skills = () => {
+    const { language } = useLanguage();
+    const t = language === 'de' ? DE.SKILLS_DATA : EN.SKILLS_DATA;
     return (
         <section id="systems">
             <div className="wrap">
                 <Reveal>
                     <div className="sheet-head">
-                        <div><div className="sheet-num">SHEET 02</div><div className="sheet-title">Systems &amp; Tooling</div></div>
-                        <div className="sheet-tag">Component legend</div>
+                        <div><div className="sheet-num">SHEET 02</div><div className="sheet-title">{t.sheetTitle}</div></div>
+                        <div className="sheet-tag">{t.sheetTag}</div>
                     </div>
                 </Reveal>
                 <Reveal>

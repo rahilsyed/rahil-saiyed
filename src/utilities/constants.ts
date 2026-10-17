@@ -1,5 +1,9 @@
 export const CONSTANTS = {
-    NAV_BAR_DATA: {
+  LANGUAGE :{
+    GERMAN:'de',
+    ENGLISH:'en'
+  },
+  NAV_BAR_DATA: {
         title: `RAHIL-SAIYED / PORTFOLIO`,
         systems: "Systems",
         timeLines: "Timeline",
