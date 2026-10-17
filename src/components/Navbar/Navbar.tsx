@@ -1,3 +1,5 @@
+import DeutscheFlag from "../../assets/DeutscheFlag";
+import EnglandFlag from "../../assets/EnglandFlag";
 import Moon from "../../assets/Moon";
 import Sun from "../../assets/Sun";
 import useLanguage from "../../hooks/useLanguage";
@@ -5,14 +7,19 @@ import useTheme from "../../hooks/useTheme";
 import { CONSTANTS } from "../../utilities/constants";
 
 const Navbar = () => {
-  const { theme, setTheme } = useTheme(); 
-  const {language, setLanguage} = useLanguage();
-  console.log(language, setLanguage);
-  
+  const { theme, setTheme } = useTheme();
+  const { language, setLanguage } = useLanguage();
+  const isDeutsche = language === CONSTANTS.LANGUAGE.GERMAN;
+  console.log('isDeutsche', isDeutsche);
+
   const isLight = theme === "light";
   const handleThemeToggle = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
+  
+  const handleLangaugeToggle = () => {
+    setLanguage(language === CONSTANTS.LANGUAGE.GERMAN ? "en" : "de")
+  }
   return (
     <header className="nav">
       <div className="wrap nav-inner">
@@ -37,6 +44,16 @@ const Navbar = () => {
           title={isLight ? "Switch to dark theme" : "Switch to light theme"}
         >
           <span className="knob">{isLight ? <Moon /> : <Sun />}</span>
+        </button>
+        <button
+          className="lang-toggle"
+          onClick={handleLangaugeToggle}
+          role="switch"
+          aria-checked={isDeutsche}
+          aria-label={isDeutsche ? "Switch to English" : "Switch to Deutsche"}
+          title={isDeutsche ? "Switch to English" : "Switch to Deutsche"}
+        >
+          <span className="knob">{isDeutsche ? <DeutscheFlag /> : <EnglandFlag />}</span>
         </button>
         <a href="#contact" className="nav-cta">
           {CONSTANTS.NAV_BAR_DATA.contact}

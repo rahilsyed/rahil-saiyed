@@ -88,21 +88,25 @@
   .nav-right{display:flex; align-items:center; gap:16px;}
   @media (max-width:800px){ nav.links{display:none;} }
 
-  .theme-toggle{
+  /* theme toggle */
+  .theme-toggle, .lang-toggle{
     position:relative; width:52px; height:28px; border-radius:14px;
     border:1px solid var(--line-strong); background:var(--bg-panel);
     cursor:pointer; flex-shrink:0; transition:background-color .25s ease, border-color .25s ease;
   }
-  .theme-toggle .knob{
+  .theme-toggle .knob, .lang-toggle .knob{
     position:absolute; top:2px; left:2px; width:22px; height:22px; border-radius:50%;
     background:var(--amber); display:flex; align-items:center; justify-content:center;
     transition:transform .3s ease, background-color .3s ease;
     box-shadow:0 0 6px var(--amber-dim);
   }
+  .theme-toggle .knob svg, .lang-toggle .knob svg{ width:14px; height:14px; }
+  /* theme: move knob right when light */
   :root[data-theme="light"] .theme-toggle .knob{ transform:translateX(24px); background:var(--cyan); box-shadow:0 0 6px var(--cyan-dim); }
-  .theme-toggle .knob svg{width:13px; height:13px;}
-  .theme-toggle:hover{border-color:var(--cyan);}
-  @media (prefers-reduced-motion: reduce){ .theme-toggle .knob{transition:none;} }
+  /* lang: move knob right when aria-checked=true (de) */
+  .lang-toggle[aria-checked="true"] .knob{ transform:translateX(24px); background:var(--cyan); box-shadow:0 0 6px var(--cyan-dim); }
+  .theme-toggle:hover, .lang-toggle:hover{ border-color:var(--cyan); }
+  @media (prefers-reduced-motion: reduce){ .theme-toggle .knob, .lang-toggle .knob{transition:none;} }
 
   /* ---------- section title block ---------- */
   .sheet-head{display:flex; align-items:flex-end; justify-content:space-between; gap:24px; margin-bottom:48px; border-bottom:1px solid var(--line-strong); padding-bottom:18px;}
