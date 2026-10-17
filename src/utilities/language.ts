@@ -1,4 +1,4 @@
-const Languages_en = {
+export const EN = {
   NAV_BAR_DATA: {
     title: `RAHIL-SAIYED / PORTFOLIO`,
     systems: "Systems",
@@ -20,12 +20,21 @@ const Languages_en = {
   }
 };
 
-const Languages_de = {
+export const DE = {
   NAV_BAR_DATA: {
     title: `RAHIL-SAIYED / PORTFOLIO`,
     systems: "Systeme",
     timeLines: "Zeitstrahl",
     builds: "Baut",
     contact: "Kontakt",
-  }
+  },
+   HERO_DATA:{
+    designation:'Full Stack Entwickler – Cloud',
+    aiSystems:'AI Systeme',
+    title:'Ich entwickle Produkte von A bis Z —',
+    title2:'Schnittstelle zur Infrastruktur.',
+    subject:'React und Node.js bilden die vorderste Front, GraphQL und AWS Lambda bilden den Hintergrund, und KI wird in den Workflow integriert, sobald sie sich als sinnvoll erweist. Aktuell werden bei Perception System produktive Funktionen bereitgestellt.',
+    button1:'Builds ansehen ↓',
+    button2:'Nehmen Sie Kontakt auf'
+  },
 };
