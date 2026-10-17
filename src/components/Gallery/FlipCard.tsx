@@ -12,9 +12,10 @@ export interface GalleryItem {
 interface FlipCardProps {
   item: GalleryItem;
   index: number;
+  backBtn: string;
 }
 
-const FlipCard = ({ item, index }: FlipCardProps) => {
+const FlipCard = ({ item, index, backBtn }: FlipCardProps) => {
     const [flipped, setFlipped] = useState(false);
   return (
     <div className={`flip-card ${flipped?"flipped":""}`}>
@@ -38,7 +39,7 @@ const FlipCard = ({ item, index }: FlipCardProps) => {
               <div className="fb-thumb" key={i}>{src ? <img src={src} alt="" /> : i+1}</div>
             ))}
           </div>
-          <button type="button" className="flip-btn back-btn" onClick={()=>setFlipped(false)}>← Back to photos</button>
+          <button type="button" className="flip-btn back-btn" onClick={()=>setFlipped(false)}>{backBtn}</button>
         </div>
       </div>
     </div>

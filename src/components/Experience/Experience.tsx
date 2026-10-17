@@ -1,8 +1,11 @@
+import useLanguage from '../../hooks/useLanguage'
 import { Reveal } from '../../hooks/useReveal'
-import { EXPERIENCE } from '../../utilities/constants';
+import { DE, EN } from '../../utilities/language';
 
 const Experience = () => {
-    const handleCertificateDownload =(fileName:string)=>{
+    const { language } = useLanguage();
+    const t = language === 'de' ? DE.EXPERIENCE_DATA : EN.EXPERIENCE_DATA;
+    const handleCertificateDownload = (fileName: string) => {
         const link = document.createElement('a');
         link.href = `/pdfs/${fileName}`;
         link.download = fileName;
@@ -15,13 +18,13 @@ const Experience = () => {
       <div className="wrap">
         <Reveal>
           <div className="sheet-head">
-            <div><div className="sheet-num">SHEET 03</div><div className="sheet-title">Experience Timeline</div></div>
-            <div className="sheet-tag">Click Badge To Download Certificate</div>
+            <div><div className="sheet-num">SHEET 03</div><div className="sheet-title">{t.sheetTitle}</div></div>
+            <div className="sheet-tag">{t.sheetTag}</div>
           </div>
         </Reveal>
         <Reveal>
           <div className="timeline">
-            {EXPERIENCE.map((e,i)=>(
+            {t.entries.map((e, i) => (
               <div className={`tl-item ${e.current?"current":""}`} key={i}>
                 <span className="tl-dot"></span>
                 <div className="tl-role-row">
