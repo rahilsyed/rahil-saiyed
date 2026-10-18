@@ -2,7 +2,7 @@ export const CONSTANTS = {
   LANGUAGE :{
     GERMAN:'de',
     ENGLISH:'en'
-  },
+  } as const,
   NAV_BAR_DATA: {
         title: `RAHIL-SAIYED / PORTFOLIO`,
         systems: "Systems",

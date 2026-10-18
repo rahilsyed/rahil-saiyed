@@ -11,7 +11,7 @@ const Hero = () => {
         <section id="top" className="hero">
             <div className="wrap hero-grid">
                 <div>
-                    <div className="eyebrow">{isDeutsche ? DE.HERO_DATA.designation : EN.HERO_DATA.designation}&amp; {isDeutsche ? DE.HERO_DATA.aiSystems : EN.HERO_DATA.aiSystems}</div>
+                    <div className="eyebrow">{isDeutsche ? DE.HERO_DATA.designation : EN.HERO_DATA.designation} &amp; {isDeutsche ? DE.HERO_DATA.aiSystems : EN.HERO_DATA.aiSystems}</div>
                     <h1 className="hero-title">{isDeutsche ? DE.HERO_DATA.title : EN.HERO_DATA.title} <span className="accent">{isDeutsche ? DE.HERO_DATA.title2 : EN.HERO_DATA.title2}</span></h1>
                     <p className="hero-sub">
                         {

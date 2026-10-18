@@ -1,5 +1,3 @@
-import DeutscheFlag from "../../assets/DeutscheFlag";
-import EnglandFlag from "../../assets/EnglandFlag";
 import Moon from "../../assets/Moon";
 import Sun from "../../assets/Sun";
 import useLanguage from "../../hooks/useLanguage";
@@ -7,58 +5,67 @@ import useTheme from "../../hooks/useTheme";
 import { CONSTANTS } from "../../utilities/constants";
 import { DE, EN } from "../../utilities/language";
 
+const LANGUAGES = [
+  { code: CONSTANTS.LANGUAGE.ENGLISH, label: "EN", name: "English" },
+  { code: CONSTANTS.LANGUAGE.GERMAN, label: "DE", name: "Deutsch" },
+] as const;
+
 const Navbar = () => {
   const { theme, setTheme } = useTheme();
   const { language, setLanguage } = useLanguage();
-  const isDeutsche = language === CONSTANTS.LANGUAGE.GERMAN;
-  console.log('isDeutsche', isDeutsche);
+  const t = language === CONSTANTS.LANGUAGE.GERMAN ? DE.NAV_BAR_DATA : EN.NAV_BAR_DATA;
 
   const isLight = theme === "light";
   const handleThemeToggle = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
-  
-  const handleLangaugeToggle = () => {
-    setLanguage(language === CONSTANTS.LANGUAGE.GERMAN ? "en" : "de")
-  }
+
   return (
     <header className="nav">
       <div className="wrap nav-inner">
         <a href="#top" className="brand">
           <span className="dot"></span>
-          {isDeutsche ? EN.NAV_BAR_DATA.title : DE.NAV_BAR_DATA.title}
+          <span className="brand-text">{t.title}</span>
+          <span className="brand-short">RAHIL SAIYED</span>
         </a>
         <nav className="links">
-          <a href="#systems">{isDeutsche ? DE.NAV_BAR_DATA.systems : EN.NAV_BAR_DATA.systems}</a>
-          <a href="#timeline">{isDeutsche ? DE.NAV_BAR_DATA.timeLines : EN.NAV_BAR_DATA.timeLines}</a>
-          <a href="#builds">{isDeutsche ? DE.NAV_BAR_DATA.builds : EN.NAV_BAR_DATA.builds}</a>
-          <a href="#debug">{isDeutsche ?  `Debug-Protokoll` :`Debug Log`}</a>
+          <a href="#systems">{t.systems}</a>
+          <a href="#timeline">{t.timeLines}</a>
+          <a href="#builds">{t.builds}</a>
+          <a href="#debug">{language === CONSTANTS.LANGUAGE.GERMAN ? `Debug-Protokoll` : `Debug Log`}</a>
         </nav>
-        <button
-          className="theme-toggle"
-          onClick={handleThemeToggle}
-          role="switch"
-          aria-checked={isLight}
-          aria-label={
-            isLight ? "Switch to dark theme" : "Switch to light theme"
-          }
-          title={isLight ? "Switch to dark theme" : "Switch to light theme"}
-        >
-          <span className="knob">{isLight ? <Moon /> : <Sun />}</span>
-        </button>
-        <button
-          className="lang-toggle"
-          onClick={handleLangaugeToggle}
-          role="switch"
-          aria-checked={isDeutsche}
-          aria-label={isDeutsche ? "Switch to English" : "Switch to Deutsche"}
-          title={isDeutsche ? "Switch to English" : "Switch to Deutsche"}
-        >
-          <span className="knob">{isDeutsche ? <DeutscheFlag /> : <EnglandFlag />}</span>
-        </button>
-        <a href="#contact" className="nav-cta">
-          {CONSTANTS.NAV_BAR_DATA.contact}
-        </a>
+        <div className="nav-right">
+          <div className="lang-switch" role="group" aria-label="Language">
+            {LANGUAGES.map((l) => (
+              <button
+                key={l.code}
+                type="button"
+                className={language === l.code ? "active" : ""}
+                aria-pressed={language === l.code}
+                lang={l.code}
+                title={l.name}
+                onClick={() => setLanguage(l.code)}
+              >
+                {l.label}
+              </button>
+            ))}
+          </div>
+          <button
+            className="theme-toggle"
+            onClick={handleThemeToggle}
+            role="switch"
+            aria-checked={isLight}
+            aria-label={
+              isLight ? "Switch to dark theme" : "Switch to light theme"
+            }
+            title={isLight ? "Switch to dark theme" : "Switch to light theme"}
+          >
+            <span className="knob">{isLight ? <Moon /> : <Sun />}</span>
+          </button>
+          <a href="#contact" className="nav-cta">
+            {t.contact}
+          </a>
+        </div>
       </div>
     </header>
   );
