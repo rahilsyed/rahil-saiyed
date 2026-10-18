@@ -8,10 +8,11 @@ import { CONSTANTS } from "../../utilities/constants";
 import { DE, EN } from "../../utilities/language";
 
 const Navbar = () => {
-  const { theme, setTheme } = useTheme(); 
-  const {language, setLanguage} = useLanguage();
-  console.log(language, setLanguage);
-  
+  const { theme, setTheme } = useTheme();
+  const { language, setLanguage } = useLanguage();
+  const isDeutsche = language === CONSTANTS.LANGUAGE.GERMAN;
+  console.log('isDeutsche', isDeutsche);
+
   const isLight = theme === "light";
   const handleThemeToggle = () => {
     setTheme(theme === "dark" ? "light" : "dark");
