@@ -5,8 +5,6 @@ type Translations = { challengeLabel: string; backHint: string; confidential: st
 type Props = { p: Project; index: number; t: Translations };
 
 const ProjectCard = ({ p, index, t }: Props) => {
-  console.log(p);
-
   const [flipped, setFlipped] = React.useState(false);
   const handleProjectNavigation = () => {
     window.open(p.link, '_blank');

@@ -5,6 +5,8 @@ import Skills from "../components/Skills/Skills";
 import Experience from "../components/Experience/Experience";
 import Projects from "../components/Projects/Projects";
 import Gallery from "../components/Gallery/Gallery";
+import DebugLog from "../components/DebugLog/DebugLog";
+import Footer from "../components/Footer/Footer";
 
 const Home = () => {
   return (
@@ -15,6 +17,9 @@ const Home = () => {
       <Experience />
       <Projects />
       <Gallery />
+      <DebugLog />
+      <Footer />
+      <footer>© 2026 Rahil Saiyed — APIs, architecture & a touch of creativity.</footer>
     </React.Fragment>
   );
 };

@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Full Stack Developer — Portfolio</title>
+<meta name="description" content="Full Stack Developer specializing in React, Node.js, GraphQL, AWS Serverless and AI-powered applications." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A1628;
+    --bg-panel:#0F2038;
+    --bg-panel-alt:#13294D;
+    --grid-line: rgba(148,180,214,0.07);
+    --line-strong: rgba(148,180,214,0.20);
+    --text-primary:#E8EEF5;
+    --text-muted:#8CA3C4;
+    --text-dim:#5C7392;
+    --amber:#FF9F1C;
+    --cyan:#5EEAD4;
+    --cyan-dim: rgba(94,234,212,0.14);
+    --amber-dim: rgba(255,159,28,0.14);
+    --font-display:'Space Grotesk', sans-serif;
+    --font-body:'Inter', sans-serif;
+    --font-mono:'JetBrains Mono', monospace;
+    --maxw: 1180px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      repeating-linear-gradient(0deg, var(--grid-line) 0px, transparent 1px, transparent 40px, var(--grid-line) 41px),
+      repeating-linear-gradient(90deg, var(--grid-line) 0px, transparent 1px, transparent 40px, var(--grid-line) 41px),
+      var(--bg);
+    color:var(--text-primary);
+    font-family:var(--font-body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  ::selection{background:var(--amber); color:#0A1628;}
+  :focus-visible{outline:2px solid var(--cyan); outline-offset:3px;}
+
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 32px;}
+  @media (max-width:640px){ .wrap{padding:0 20px;} }
+
+  /* ---------- crop marks ---------- */
+  .crop{position:absolute; width:16px; height:16px; pointer-events:none;}
+  .crop::before, .crop::after{content:""; position:absolute; background:var(--line-strong);}
+  .crop::before{width:16px; height:1px; top:0; left:0;}
+  .crop::after{width:1px; height:16px; top:0; left:0;}
+  .crop.tr{right:0; left:auto;}
+  .crop.tr::before{right:0; left:auto;}
+  .crop.tr::after{right:0; left:auto;}
+  .crop.bl{bottom:0; top:auto;}
+  .crop.bl::before{bottom:0; top:auto;}
+  .crop.bl::after{bottom:0; top:auto;}
+  .crop.br{bottom:0; top:auto; right:0; left:auto;}
+  .crop.br::before{bottom:0; top:auto; right:0; left:auto;}
+  .crop.br::after{bottom:0; top:auto; right:0; left:auto;}
+
+  /* ---------- nav ---------- */
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(10,22,40,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line-strong);
+  }
+  .nav-inner{display:flex; align-items:center; justify-content:space-between; height:64px;}
+  .brand{font-family:var(--font-mono); font-size:13px; letter-spacing:0.08em; color:var(--text-primary); display:flex; align-items:center; gap:8px;}
+  .brand .dot{width:7px; height:7px; border-radius:50%; background:var(--cyan); box-shadow:0 0 8px var(--cyan);}
+  nav.links{display:flex; gap:28px; font-family:var(--font-mono); font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-muted);}
+  nav.links a{position:relative; padding:4px 0; transition:color .2s;}
+  nav.links a:hover{color:var(--cyan);}
+  .nav-cta{font-family:var(--font-mono); font-size:12px; letter-spacing:0.05em; border:1px solid var(--amber); color:var(--amber); padding:7px 14px; border-radius:2px; transition:all .2s;}
+  .nav-cta:hover{background:var(--amber); color:#0A1628;}
+  @media (max-width:800px){ nav.links{display:none;} }
+
+  /* ---------- section title block ---------- */
+  .sheet-head{display:flex; align-items:flex-end; justify-content:space-between; gap:24px; margin-bottom:48px; border-bottom:1px solid var(--line-strong); padding-bottom:18px;}
+  .sheet-num{font-family:var(--font-mono); font-size:12px; color:var(--cyan); letter-spacing:0.1em;}
+  .sheet-title{font-family:var(--font-display); font-size:clamp(28px,4vw,42px); font-weight:600; letter-spacing:-0.01em; margin-top:4px;}
+  .sheet-tag{font-family:var(--font-mono); font-size:11px; color:var(--text-dim); text-align:right; letter-spacing:0.06em; text-transform:uppercase; white-space:nowrap;}
+
+  section{position:relative; padding:100px 0; border-bottom:1px dashed var(--grid-line);}
+  section .wrap{position:relative;}
+
+  .reveal{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){ .reveal{opacity:1; transform:none; transition:none;} }
+
+  /* ---------- hero ---------- */
+  .hero{padding-top:64px; min-height:92vh; display:flex; align-items:center;}
+  .hero-grid{display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center; width:100%;}
+  @media (max-width:960px){ .hero-grid{grid-template-columns:1fr;} .hero{min-height:auto; padding-top:48px;} }
+
+  .eyebrow{font-family:var(--font-mono); font-size:12px; color:var(--amber); letter-spacing:0.14em; text-transform:uppercase; display:flex; align-items:center; gap:10px; margin-bottom:20px;}
+  .eyebrow::before{content:""; width:22px; height:1px; background:var(--amber);}
+  h1.hero-title{font-family:var(--font-display); font-size:clamp(38px,5.6vw,64px); font-weight:700; line-height:1.05; letter-spacing:-0.02em;}
+  h1.hero-title .accent{color:var(--cyan);}
+  .hero-sub{margin-top:24px; font-size:17px; color:var(--text-muted); max-width:520px;}
+  .hero-actions{display:flex; gap:14px; margin-top:36px; flex-wrap:wrap;}
+  .btn{font-family:var(--font-mono); font-size:13px; letter-spacing:0.04em; padding:13px 22px; border-radius:2px; transition:all .2s; display:inline-flex; align-items:center; gap:8px;}
+  .btn-primary{background:var(--amber); color:#0A1628; font-weight:600;}
+  .btn-primary:hover{background:#ffb347; transform:translateY(-1px);}
+  .btn-ghost{border:1px solid var(--line-strong); color:var(--text-primary);}
+  .btn-ghost:hover{border-color:var(--cyan); color:var(--cyan);}
+
+  .stack-strip{margin-top:44px; display:flex; gap:10px; flex-wrap:wrap;}
+  .stack-strip span{font-family:var(--font-mono); font-size:11px; color:var(--text-dim); border:1px solid var(--grid-line); padding:5px 10px; border-radius:2px;}
+
+  /* ---------- diagram ---------- */
+  .diagram-frame{position:relative; border:1px solid var(--line-strong); border-radius:4px; background:linear-gradient(180deg, rgba(255,255,255,0.015), transparent); padding:18px;}
+  .diagram-frame .label{position:absolute; top:-11px; left:16px; background:var(--bg); padding:0 8px; font-family:var(--font-mono); font-size:10px; color:var(--text-dim); letter-spacing:0.1em; text-transform:uppercase;}
+  .node-tip{font-family:var(--font-mono); font-size:11px; fill:var(--text-muted);}
+  .node-label{font-family:var(--font-display); font-size:12.5px; font-weight:600; fill:var(--text-primary);}
+
+  /* ---------- skills ---------- */
+  .skill-groups{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:1px; background:var(--grid-line); border:1px solid var(--line-strong);}
+  .skill-card{background:var(--bg); padding:26px 24px;}
+  .skill-card h3{font-family:var(--font-mono); font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--cyan); margin-bottom:16px;}
+  .skill-card ul{list-style:none;}
+  .skill-card li{font-size:14px; color:var(--text-muted); padding:5px 0; display:flex; align-items:center; gap:9px;}
+  .skill-card li::before{content:""; width:5px; height:5px; background:var(--amber); flex-shrink:0;}
+
+  /* ---------- experience ---------- */
+  .timeline{position:relative; padding-left:40px;}
+  .timeline::before{content:""; position:absolute; left:7px; top:6px; bottom:6px; width:1px; background:var(--line-strong);}
+  .tl-item{position:relative; padding-bottom:56px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-dot{position:absolute; left:-40px; top:4px; width:15px; height:15px; border-radius:50%; background:var(--bg); border:2px solid var(--amber);}
+  .tl-item.current .tl-dot{background:var(--amber); box-shadow:0 0 0 4px var(--amber-dim);}
+  .tl-role-row{display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin-bottom:6px;}
+  .tl-role{font-family:var(--font-display); font-size:21px; font-weight:600;}
+  .tl-badge{font-family:var(--font-mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--amber); border:1px solid var(--amber); padding:2px 8px; border-radius:10px;}
+  .tl-company{font-family:var(--font-mono); font-size:13px; color:var(--cyan); margin-bottom:14px;}
+  .tl-desc{color:var(--text-muted); font-size:14.5px; max-width:640px;}
+  .tl-desc ul{margin-top:10px; padding-left:18px;}
+  .tl-desc li{margin-bottom:6px;}
+
+  /* ---------- projects ---------- */
+  .proj-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:22px;}
+  .proj-card{border:1px solid var(--line-strong); border-radius:4px; padding:26px; background:rgba(255,255,255,0.012); position:relative; transition:border-color .2s, transform .2s;}
+  .proj-card:hover{border-color:var(--cyan); transform:translateY(-3px);}
+  .proj-idx{font-family:var(--font-mono); font-size:11px; color:var(--text-dim); margin-bottom:14px;}
+  .proj-title{font-family:var(--font-display); font-size:19px; font-weight:600; margin-bottom:10px;}
+  .proj-desc{font-size:13.5px; color:var(--text-muted); margin-bottom:16px;}
+  .proj-tags{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:14px;}
+  .proj-tags span{font-family:var(--font-mono); font-size:10.5px; color:var(--cyan); background:var(--cyan-dim); padding:3px 8px; border-radius:2px;}
+  .proj-challenge{font-size:12.5px; color:var(--text-dim); border-top:1px dashed var(--grid-line); padding-top:12px;}
+  .proj-challenge b{color:var(--amber); font-family:var(--font-mono); font-weight:600; font-size:10.5px; letter-spacing:0.06em; text-transform:uppercase; display:block; margin-bottom:5px;}
+
+  /* project flip cards */
+  .flip-card.proj-flip{height:320px;}
+  .flip-card.proj-flip:focus-visible{outline:2px solid var(--cyan); outline-offset:4px;}
+  .proj-flip-front, .proj-flip-back{padding:26px; display:flex; flex-direction:column; height:100%;}
+  .proj-flip-front:hover{border-color:var(--cyan);}
+  .proj-flip .proj-desc{flex:1;}
+  .proj-flip-back{background:var(--bg-panel); transform:rotateY(180deg);}
+  .proj-flip-back .proj-challenge{border-top:none; padding-top:0; flex:1;}
+  .proj-flip-back .fb-desc{font-size:13px; color:var(--text-muted); line-height:1.6;}
+  .proj-flip-hint{font-family:var(--font-mono); font-size:10px; letter-spacing:0.05em; text-transform:uppercase; color:var(--text-dim); margin-top:14px;}
+
+  /* ---------- debug log ---------- */
+  .log{border:1px solid var(--line-strong); border-radius:4px; overflow:hidden;}
+  .log-row{display:grid; grid-template-columns:70px 1fr 140px; gap:16px; padding:14px 20px; font-size:13.5px; border-bottom:1px solid var(--grid-line); align-items:center;}
+  .log-row:last-child{border-bottom:none;}
+  .log-row:hover{background:rgba(255,255,255,0.02);}
+  .log-id{font-family:var(--font-mono); font-size:11px; color:var(--text-dim);}
+  .log-status{font-family:var(--font-mono); font-size:10.5px; color:var(--cyan); text-align:right; letter-spacing:0.06em;}
+  .log-status::before{content:"● "; }
+  .log-issue{color:var(--text-primary);}
+  @media (max-width:640px){ .log-row{grid-template-columns:1fr; gap:4px;} .log-status{text-align:left;} }
+
+  /* ---------- contact / title block ---------- */
+  .titleblock{border:1px solid var(--line-strong); border-radius:4px; padding:40px; position:relative;}
+  .tb-top{display:flex; justify-content:space-between; align-items:flex-start; gap:24px; flex-wrap:wrap; margin-bottom:32px;}
+  .tb-heading{font-family:var(--font-display); font-size:clamp(26px,4vw,38px); font-weight:600; max-width:480px;}
+  .tb-fields{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:20px; border-top:1px solid var(--grid-line); padding-top:24px;}
+  .tb-field span{display:block; font-family:var(--font-mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-dim); margin-bottom:6px;}
+  .tb-field a, .tb-field p{font-size:14px; color:var(--text-primary);}
+  .tb-field a:hover{color:var(--cyan);}
+  footer{padding:32px 0; text-align:center; font-family:var(--font-mono); font-size:11px; color:var(--text-dim);}
+
+  .note{font-size:12px; color:var(--text-dim); margin-top:10px; font-style:italic;}
+
+  /* ---------- field photos (flip cards with multi-photo stacks) ---------- */
+  .gallery-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:30px;}
+  .flip-card{perspective:1400px; height:340px;}
+  .flip-inner{position:relative; width:100%; height:100%; transition:transform .65s cubic-bezier(.4,.2,.2,1); transform-style:preserve-3d;}
+  .flip-card.flipped .flip-inner{transform:rotateY(180deg);}
+  .flip-face{position:absolute; inset:0; backface-visibility:hidden; border-radius:4px; border:1px solid var(--line-strong); overflow:hidden; background:var(--bg);}
+  .flip-front{display:flex; flex-direction:column;}
+
+  /* stacked-prints photo area */
+  .flip-photo{flex:1; position:relative; overflow:visible; margin:16px 16px 0 16px;}
+  .stack-layer{position:absolute; inset:0; border:1px solid var(--line-strong); border-radius:3px; background:var(--bg-panel-alt); transition:transform .3s ease, opacity .3s ease;}
+  .stack-layer.behind-2{transform:rotate(-6deg) translate(-3px,3px); opacity:0.5; z-index:1;}
+  .stack-layer.behind-1{transform:rotate(4deg) translate(3px,2px); opacity:0.7; z-index:2;}
+  .stack-layer.active-photo{z-index:3; overflow:hidden; display:flex; align-items:center; justify-content:center;}
+  .stack-layer.active-photo img{width:100%; height:100%; object-fit:cover; display:block;}
+
+  /* card-shuffle transition between photos */
+  .stack-layer.shuffle-exit{z-index:6; transition:transform .38s cubic-bezier(.4,.1,.3,1), opacity .38s ease;}
+  .stack-layer.shuffle-exit.to-right.go{transform:translateX(46px) rotate(13deg) scale(0.9); opacity:0;}
+  .stack-layer.shuffle-exit.to-left.go{transform:translateX(-46px) rotate(-13deg) scale(0.9); opacity:0;}
+  .stack-layer.shuffle-enter{z-index:2; transition:transform .38s cubic-bezier(.4,.1,.3,1), opacity .38s ease;}
+  .stack-layer.shuffle-enter.from-left{transform:translateX(-46px) rotate(-13deg) scale(0.9); opacity:0;}
+  .stack-layer.shuffle-enter.from-right{transform:translateX(46px) rotate(13deg) scale(0.9); opacity:0;}
+  .stack-layer.shuffle-enter.go{transform:none; opacity:1;}
+  .ph-fallback{width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-family:var(--font-mono); font-size:10.5px; color:var(--text-dim); text-align:center; padding:10px; line-height:1.5;}
+  .ph-tag{position:absolute; top:8px; left:8px; z-index:4; font-family:var(--font-mono); font-size:9.5px; letter-spacing:0.08em; text-transform:uppercase; background:rgba(10,22,40,0.82); color:var(--cyan); border:1px solid var(--line-strong); padding:3px 8px; border-radius:2px;}
+  .ph-count{position:absolute; top:8px; right:8px; z-index:4; font-family:var(--font-mono); font-size:9px; letter-spacing:0.05em; color:var(--text-dim); background:rgba(10,22,40,0.82); border:1px solid var(--line-strong); padding:3px 7px; border-radius:2px;}
+
+  .ph-arrow{position:absolute; top:50%; transform:translateY(-50%); z-index:5; width:26px; height:26px; border-radius:50%; border:1px solid var(--line-strong); background:rgba(10,22,40,0.82); color:var(--text-primary); font-family:var(--font-mono); font-size:13px; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:border-color .2s, color .2s;}
+  .ph-arrow:hover{border-color:var(--cyan); color:var(--cyan);}
+  .ph-arrow.prev{left:6px;}
+  .ph-arrow.next{right:6px;}
+  .ph-dots{position:absolute; bottom:7px; left:0; right:0; z-index:4; display:flex; justify-content:center; gap:6px;}
+  .ph-dot{width:5px; height:5px; border-radius:50%; border:none; background:var(--text-dim); cursor:pointer; padding:0;}
+  .ph-dot.on{background:var(--amber); box-shadow:0 0 0 3px var(--amber-dim);}
+
+  .flip-caption{padding:12px 14px; display:flex; align-items:center; justify-content:space-between; gap:10px;}
+  .flip-caption .fc-text .ft{font-family:var(--font-display); font-size:14px; font-weight:600;}
+  .flip-caption .fc-text .fs{font-family:var(--font-mono); font-size:10.5px; color:var(--text-dim); margin-top:2px;}
+  .flip-btn{all:unset; cursor:pointer; flex-shrink:0; font-family:var(--font-mono); font-size:9.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--amber); border:1px solid var(--amber); padding:6px 10px; border-radius:2px; transition:all .2s;}
+  .flip-btn:hover{background:var(--amber); color:#0A1628;}
+  .flip-btn:focus-visible{outline:2px solid var(--cyan); outline-offset:2px;}
+
+  .flip-back{background:var(--bg-panel); transform:rotateY(180deg); padding:22px; display:flex; flex-direction:column;}
+  .flip-back .fb-num{font-family:var(--font-mono); font-size:10px; color:var(--amber); letter-spacing:0.1em; margin-bottom:10px;}
+  .flip-back .fb-title{font-family:var(--font-display); font-size:16px; font-weight:600; margin-bottom:8px;}
+  .flip-back .fb-desc{font-size:12.5px; color:var(--text-muted); line-height:1.55; flex:1;}
+  .fb-thumbs{display:flex; gap:6px; margin:14px 0;}
+  .fb-thumb{width:34px; height:34px; border-radius:2px; border:1px solid var(--line-strong); overflow:hidden; background:var(--bg-panel-alt); display:flex; align-items:center; justify-content:center; font-family:var(--font-mono); font-size:8px; color:var(--text-dim); flex-shrink:0;}
+  .fb-thumb img{width:100%; height:100%; object-fit:cover;}
+  .flip-btn.back-btn{align-self:flex-start;}
+  .gallery-note{margin-top:22px;}
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+
+<script type="text/babel" data-type="module">
+const {useEffect, useRef, useState} = React;
+
+/* ---------- scroll reveal hook ---------- */
+function useReveal(){
+  const ref = useRef(null);
+  const [inView, setInView] = useState(false);
+  useEffect(()=>{
+    const el = ref.current;
+    if(!el) return;
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ setInView(true); obs.unobserve(el); } });
+    }, {threshold:0.12});
+    obs.observe(el);
+    return ()=>obs.disconnect();
+  },[]);
+  return [ref, inView];
+}
+
+function Reveal({children, as:Tag="div", className="", style}){
+  const [ref, inView] = useReveal();
+  return <Tag ref={ref} className={`reveal ${inView?"in":""} ${className}`} style={style}>{children}</Tag>;
+}
+
+function Crops(){
+  return <React.Fragment>
+    <span className="crop tl"></span><span className="crop tr"></span>
+    <span className="crop bl"></span><span className="crop br"></span>
+  </React.Fragment>;
+}
+
+/* ---------- Nav ---------- */
+function Nav(){
+  return (
+    <header className="nav">
+      <div className="wrap nav-inner">
+        <a href="#top" className="brand"><span className="dot"></span>PORTFOLIO / FSD-01</a>
+        <nav className="links">
+          <a href="#systems">Systems</a>
+          <a href="#timeline">Timeline</a>
+          <a href="#builds">Builds</a>
+          <a href="#photos">Photos</a>
+          <a href="#debug">Debug&nbsp;Log</a>
+        </nav>
+        <a href="#contact" className="nav-cta">Contact</a>
+      </div>
+    </header>
+  );
+}
+
+/* ---------- Hero diagram (signature element) ---------- */
+function ArchDiagram(){
+  const nodes = [
+    {x:40, y:40, w:120, h:46, title:"CLIENT", sub:"React / Next.js"},
+    {x:220, y:110, w:120, h:46, title:"API", sub:"GraphQL"},
+    {x:40, y:180, w:150, h:46, title:"COMPUTE", sub:"Node.js + Lambda"},
+    {x:220, y:250, w:130, h:46, title:"DATA", sub:"MongoDB / DynamoDB"},
+    {x:40, y:320, w:150, h:46, title:"DELIVERY", sub:"S3 + CloudFront"},
+  ];
+  // paths connecting node centers, roughly orthogonal
+  const paths = [
+    "M100,86 L100,110 L280,110 L280,110", // client -> api (down then right) approx
+    "M220,133 L115,133 L115,180",         // api -> compute
+    "M115,226 L115,250 L280,250 L280,250",// compute -> data
+    "M220,273 L115,273 L115,320",         // data -> delivery
+  ];
+  return (
+    <div className="diagram-frame">
+      <span className="label">System Diagram — request lifecycle</span>
+      <svg viewBox="0 0 400 400" width="100%" role="img" aria-label="Architecture diagram showing a React client calling a GraphQL API, handled by Node.js and AWS Lambda compute, backed by MongoDB and DynamoDB, delivered via S3 and CloudFront.">
+        <defs>
+          <marker id="dot" markerWidth="6" markerHeight="6" refX="3" refY="3">
+            <circle cx="3" cy="3" r="2.4" fill="#5EEAD4" />
+          </marker>
+        </defs>
+        {paths.map((d,i)=>(
+          <g key={i}>
+            <path d={d} fill="none" stroke="rgba(148,180,214,0.28)" strokeWidth="1.4" strokeDasharray="3 5"/>
+            <circle r="3.4" fill="#5EEAD4">
+              <animateMotion dur={`${3+i*0.6}s`} repeatCount="indefinite" path={d} />
+            </circle>
+          </g>
+        ))}
+        {nodes.map((n,i)=>(
+          <g key={i} className="arch-node">
+            <rect x={n.x} y={n.y} width={n.w} height={n.h} rx="3"
+              fill="rgba(255,255,255,0.02)" stroke="rgba(148,180,214,0.35)" strokeWidth="1">
+              <animate attributeName="stroke" values="rgba(148,180,214,0.35);#FF9F1C;rgba(148,180,214,0.35)" dur="6s" begin={`${i*1.1}s`} repeatCount="indefinite" />
+            </rect>
+            <text x={n.x+14} y={n.y+20} className="node-label">{n.title}</text>
+            <text x={n.x+14} y={n.y+35} className="node-tip">{n.sub}</text>
+          </g>
+        ))}
+      </svg>
+    </div>
+  );
+}
+
+/* ---------- Hero ---------- */
+function Hero(){
+  return (
+    <section id="top" className="hero">
+      <div className="wrap hero-grid">
+        <div>
+          <div className="eyebrow">Full Stack Developer — Cloud &amp; AI Systems</div>
+          <h1 className="hero-title">I build products end to end — <span className="accent">interface to infrastructure.</span></h1>
+          <p className="hero-sub">
+            React and Node.js on the front lines, GraphQL and AWS Lambda underneath, and AI
+            woven into the workflow when it earns its place. Currently shipping production
+            features at Perception System.
+          </p>
+          <div className="hero-actions">
+            <a className="btn btn-primary" href="#builds">View builds ↓</a>
+            <a className="btn btn-ghost" href="#contact">Get in touch</a>
+          </div>
+          <div className="stack-strip">
+            {["React","Next.js","Node.js","GraphQL","AWS Lambda","DynamoDB","MongoDB","Claude / OpenAI API"].map(s=>
+              <span key={s}>{s}</span>
+            )}
+          </div>
+        </div>
+        <Reveal><ArchDiagram/></Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- Skills ---------- */
+const skillGroups = [
+  {title:"Languages", items:["JavaScript (ES6+)","TypeScript (intermediate)"]},
+  {title:"Frontend", items:["React.js","Next.js","HTML5 / CSS3","Responsive UI"]},
+  {title:"Backend", items:["Node.js","Express.js","REST APIs","GraphQL APIs","Auth & Authorization"]},
+  {title:"Database", items:["MongoDB","Mongoose","DynamoDB"]},
+  {title:"Cloud & DevOps", items:["AWS Lambda","S3 & CloudFront","IAM & Cognito","AppSync (Amplify GraphQL)","Serverless architecture"]},
+  {title:"AI & Automation", items:["Claude AI integration","OpenAI API","Puppeteer / PDF generation","Browser automation"]},
+];
+
+function Skills(){
+  return (
+    <section id="systems">
+      <div className="wrap">
+        <Reveal>
+          <div className="sheet-head">
+            <div><div className="sheet-num">SHEET 02</div><div className="sheet-title">Systems &amp; Tooling</div></div>
+            <div className="sheet-tag">Component legend</div>
+          </div>
+        </Reveal>
+        <Reveal>
+          <div className="skill-groups">
+            {skillGroups.map(g=>(
+              <div className="skill-card" key={g.title}>
+                <h3>{g.title}</h3>
+                <ul>{g.items.map(i=><li key={i}>{i}</li>)}</ul>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- Experience ---------- */
+const experience = [
+  {
+    role:"Full Stack Developer", company:"Perception System", badge:"Current",
+    current:true,
+    desc:"Building production features across the stack — React/Next.js interfaces, Node.js and Express APIs, and AWS Amplify GraphQL schemas with live subscriptions.",
+    bullets:[
+      "Designed and shipped AI-powered features: AI-generated eBooks, LLM-driven HTML generation, and image-generation pipelines.",
+      "Built a serverless PDF pipeline on AWS Lambda using Puppeteer and headless Chromium, with S3 delivery.",
+      "Owned cloud infrastructure — CloudFront CDN configuration, IAM permissions, presigned URLs, and CORS.",
+      "Debugged production issues spanning GraphQL payload limits, Lambda packaging, and Next.js build failures.",
+    ]
+  },
+  {
+    role:"Backend Developer Intern", company:"Mayora Infotech", badge:"Internship",
+    current:false,
+    desc:"Focused on backend fundamentals — building and maintaining REST APIs with Node.js and Express, and working with database design and CRUD operations.",
+    bullets:[]
+  },
+  {
+    role:"Summer Intern", company:"Adani Green Energy", badge:"Internship",
+    current:false,
+    desc:"Early hands-on exposure to software development workflows, version control, and collaborative engineering practices.",
+    bullets:[]
+  },
+];
+
+function Experience(){
+  return (
+    <section id="timeline">
+      <div className="wrap">
+        <Reveal>
+          <div className="sheet-head">
+            <div><div className="sheet-num">SHEET 03</div><div className="sheet-title">Experience Timeline</div></div>
+            <div className="sheet-tag">Most recent first</div>
+          </div>
+        </Reveal>
+        <Reveal>
+          <div className="timeline">
+            {experience.map((e,i)=>(
+              <div className={`tl-item ${e.current?"current":""}`} key={i}>
+                <span className="tl-dot"></span>
+                <div className="tl-role-row">
+                  <span className="tl-role">{e.role}</span>
+                  <span className="tl-badge">{e.badge}</span>
+                </div>
+                <div className="tl-company">{e.company}</div>
+                <div className="tl-desc">
+                  {e.desc}
+                  {e.bullets.length>0 && <ul>{e.bullets.map((b,j)=><li key={j}>{b}</li>)}</ul>}
+                </div>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- Projects ---------- */
+const projects = [
+  {
+    title:"Lugelo Platform", desc:"A production platform spanning AI eBook generation, interactive storybooks, VR experiences, and a full user dashboard for media management.",
+    tags:["React","Node.js","AWS","GraphQL","DynamoDB","S3","CloudFront"],
+    challenge:"Synced frontend state across long-running AI generation jobs without polling, using GraphQL subscriptions."
+  },
+  {
+    title:"AI eBook Generator", desc:"An AI workflow that generates complete HTML books through LLMs, tracks generation status, and handles failures gracefully.",
+    tags:["LLM orchestration","GraphQL Subscriptions","Prompt engineering"],
+    challenge:"Kept the UI honest during multi-minute generations — real-time status, retries, and clear failure states."
+  },
+  {
+    title:"Serverless PDF Generator", desc:"An AWS Lambda service that renders HTML, generates PDFs with headless Chromium, and delivers secure, downloadable files via S3.",
+    tags:["AWS Lambda","Puppeteer","S3","Performance"],
+    challenge:"Got headless Chromium running reliably inside Lambda's size and memory constraints."
+  },
+  {
+    title:"VR Content Module", desc:"VR model management with environment separation across development, staging and production, plus dynamic content filtering.",
+    tags:["React","Cloud assets","Environment config"],
+    challenge:"Kept dev/staging/prod content isolated while sharing one deployment pipeline."
+  },
+];
+
+function ProjectCard({p, index}){
+  const [flipped, setFlipped] = useState(false);
+  return (
+    <div
+      className={`flip-card proj-flip ${flipped?"flipped":""}`}
+      role="button"
+      tabIndex={0}
+      aria-pressed={flipped}
+      aria-label={`${p.title} — click to ${flipped?"show project info":"show challenge solved"}`}
+      onClick={()=>setFlipped(f=>!f)}
+      onKeyDown={(e)=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); setFlipped(f=>!f); } }}
+      style={{cursor:"pointer"}}
+    >
+      <div className="flip-inner">
+        <div className="flip-face proj-flip-front">
+          <div className="proj-idx">// {String(index+1).padStart(2,"0")}</div>
+          <div className="proj-title">{p.title}</div>
+          <div className="proj-desc">{p.desc}</div>
+          <div className="proj-tags">{p.tags.map(t=><span key={t}>{t}</span>)}</div>
+          <div className="proj-flip-hint">Click for challenge solved →</div>
+        </div>
+        <div className="flip-face proj-flip-back">
+          <div className="proj-idx">// {String(index+1).padStart(2,"0")} — challenge</div>
+          <div className="proj-title">{p.title}</div>
+          <div className="proj-challenge">
+            <b>Challenge solved</b>
+            <div className="fb-desc">{p.challenge}</div>
+          </div>
+          <div className="proj-flip-hint">← Click to go back</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Projects(){
+  return (
+    <section id="builds">
+      <div className="wrap">
+        <Reveal>
+          <div className="sheet-head">
+            <div><div className="sheet-num">SHEET 04</div><div className="sheet-title">Selected Builds</div></div>
+            <div className="sheet-tag">Click a card for the challenge solved</div>
+          </div>
+        </Reveal>
+        <div className="proj-grid">
+          {projects.map((p,i)=>(
+            <Reveal key={p.title}>
+              <ProjectCard p={p} index={i} />
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- Field Photos (interactive flip gallery, multiple photos per card) ---------- */
+// Each item can hold several photos in `photos` — an array of image URLs.
+// Leave entries as "" to show a numbered placeholder slot until you add real images.
+const galleryItems = [
+  {
+    tag:"Workplace", title:"Perception System", subtitle:"Full Stack Developer — current",
+    photos:["", "", ""],
+    back:"Wherever you shipped AI eBooks, PDF pipelines, or the desk you built it all from — swap this text for the real story behind the photos."
+  },
+  {
+    tag:"Internship", title:"Mayora Infotech", subtitle:"Backend Developer Intern",
+    photos:["", ""],
+    back:"A team photo, a certificate, and a screenshot of your first deployed API — stack all of them here."
+  },
+  {
+    tag:"Internship", title:"Adani Green Energy", subtitle:"Summer Intern",
+    photos:["", "", ""],
+    back:"Your first taste of a real engineering team. Drop in photos from the site visit, the office, and the closing presentation."
+  },
+  {
+    tag:"Build", title:"Lugelo Platform", subtitle:"Product screenshots",
+    photos:["", "", "", ""],
+    back:"Dashboard screenshots, a demo GIF frame, or the whiteboard sketch that started it — this card holds the whole set."
+  },
+];
+
+function PhotoStack({photos, tag, title}){
+  const [idx, setIdx] = useState(0);
+  const [anim, setAnim] = useState(null); // {dir, from, to, phase:'start'|'end'}
+  const timerRef = useRef(null);
+  const count = photos.length;
+
+  useEffect(()=>()=>{ if(timerRef.current) clearTimeout(timerRef.current); },[]);
+
+  const shuffleTo = (to, dir, e) => {
+    e.stopPropagation();
+    if (anim || to === idx) return;
+    setAnim({dir, from:idx, to, phase:"start"});
+    requestAnimationFrame(()=>{
+      requestAnimationFrame(()=>{
+        setAnim(a => a ? {...a, phase:"end"} : a);
+      });
+    });
+    timerRef.current = setTimeout(()=>{
+      setIdx(to);
+      setAnim(null);
+    }, 380);
+  };
+
+  const go = (dir, e) => {
+    const to = (idx + dir + count) % count;
+    shuffleTo(to, dir, e);
+  };
+
+  const goDot = (i, e) => {
+    const forward = (i - idx + count) % count;
+    const backward = (idx - i + count) % count;
+    const dir = forward <= backward ? 1 : -1;
+    shuffleTo(i, dir, e);
+  };
+
+  const renderFace = (i) => (
+    photos[i]
+      ? <img src={photos[i]} alt={`${title} photo ${i+1}`} />
+      : <div className="ph-fallback">// print {String(i+1).padStart(2,"0")} of {String(count).padStart(2,"0")}<br/>drop image src here</div>
+  );
+
+  return (
+    <div className="flip-photo">
+      {count > 2 && <div className="stack-layer behind-2"></div>}
+      {count > 1 && <div className="stack-layer behind-1"></div>}
+
+      {anim ? (
+        <React.Fragment>
+          <div className={`stack-layer active-photo shuffle-exit ${anim.dir>0?"to-right":"to-left"} ${anim.phase==="end"?"go":""}`}>
+            {renderFace(anim.from)}
+          </div>
+          <div className={`stack-layer active-photo shuffle-enter ${anim.dir>0?"from-left":"from-right"} ${anim.phase==="end"?"go":""}`}>
+            {renderFace(anim.to)}
+          </div>
+        </React.Fragment>
+      ) : (
+        <div className="stack-layer active-photo">
+          {renderFace(idx)}
+        </div>
+      )}
+
+      <span className="ph-tag">{tag}</span>
+      {count > 1 && <span className="ph-count">{(anim?anim.to:idx)+1}/{count}</span>}
+      {count > 1 && (
+        <React.Fragment>
+          <button type="button" className="ph-arrow prev" aria-label="Previous photo" onClick={(e)=>go(-1,e)}>‹</button>
+          <button type="button" className="ph-arrow next" aria-label="Next photo" onClick={(e)=>go(1,e)}>›</button>
+          <div className="ph-dots">
+            {photos.map((_,i)=>(
+              <button
+                type="button"
+                key={i}
+                className={`ph-dot ${i===(anim?anim.to:idx)?"on":""}`}
+                aria-label={`Go to photo ${i+1}`}
+                onClick={(e)=>goDot(i,e)}
+              />
+            ))}
+          </div>
+        </React.Fragment>
+      )}
+    </div>
+  );
+}
+
+function FlipCard({item, index}){
+  const [flipped, setFlipped] = useState(false);
+  return (
+    <div className={`flip-card ${flipped?"flipped":""}`}>
+      <div className="flip-inner">
+        <div className="flip-face flip-front">
+          <PhotoStack photos={item.photos} tag={item.tag} title={item.title} />
+          <div className="flip-caption">
+            <div className="fc-text">
+              <div className="ft">{item.title}</div>
+              <div className="fs">{item.subtitle}</div>
+            </div>
+            <button type="button" className="flip-btn" onClick={()=>setFlipped(true)}>Details</button>
+          </div>
+        </div>
+        <div className="flip-face flip-back">
+          <div className="fb-num">// 0{index+1} — details</div>
+          <div className="fb-title">{item.title}</div>
+          <div className="fb-desc">{item.back}</div>
+          <div className="fb-thumbs">
+            {item.photos.map((src,i)=>(
+              <div className="fb-thumb" key={i}>{src ? <img src={src} alt="" /> : i+1}</div>
+            ))}
+          </div>
+          <button type="button" className="flip-btn back-btn" onClick={()=>setFlipped(false)}>← Back to photos</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Gallery(){
+  return (
+    <section id="photos">
+      <div className="wrap">
+        <Reveal>
+          <div className="sheet-head">
+            <div><div className="sheet-num">SHEET 05</div><div className="sheet-title">Field Photos</div></div>
+            <div className="sheet-tag">Arrows cycle photos · Details flips the card</div>
+          </div>
+        </Reveal>
+        <Reveal>
+          <div className="gallery-grid">
+            {galleryItems.map((item,i)=>(
+              <FlipCard item={item} index={i} key={item.title}/>
+            ))}
+          </div>
+        </Reveal>
+        <Reveal>
+          <div className="note gallery-note">Placeholder photo slots above — fill each item's <code>photos</code> array with your own image URLs (as many as you like per card) to swap in the real set.</div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- Debug log (challenges solved) ---------- */
+const logItems = [
+  "Large GraphQL payload limitations",
+  "CloudFront caching misconfiguration",
+  "S3 bucket & object permissions",
+  "Lambda deployment package size",
+  "CORS across API and CDN layers",
+  "Puppeteer stability on AWS Lambda",
+  "Git cherry-pick conflicts",
+  "Next.js build failures",
+  "Authentication flow edge cases",
+  "AWS IAM policy scoping",
+];
+
+function DebugLog(){
+  return (
+    <section id="debug">
+      <div className="wrap">
+        <Reveal>
+          <div className="sheet-head">
+            <div><div className="sheet-num">SHEET 06</div><div className="sheet-title">Debug Log</div></div>
+            <div className="sheet-tag">Issues traced &amp; resolved</div>
+          </div>
+        </Reveal>
+        <Reveal>
+          <div className="log">
+            {logItems.map((issue,i)=>(
+              <div className="log-row" key={issue}>
+                <span className="log-id">#{String(i+1).padStart(3,"0")}</span>
+                <span className="log-issue">{issue}</span>
+                <span className="log-status">resolved</span>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- Contact / title block ---------- */
+function Contact(){
+  return (
+    <section id="contact" style={{borderBottom:"none"}}>
+      <div className="wrap">
+        <Reveal>
+          <div className="sheet-head">
+            <div><div className="sheet-num">SHEET 07</div><div className="sheet-title">Contact</div></div>
+            <div className="sheet-tag">Open to full-time roles</div>
+          </div>
+        </Reveal>
+        <Reveal>
+          <div className="titleblock">
+            <Crops/>
+            <div className="tb-top">
+              <div className="tb-heading">Building cloud-native, AI-powered products — let's talk about where I'd fit.</div>
+              <a className="btn btn-primary" href="mailto:you@example.com">Email me →</a>
+            </div>
+            <div className="tb-fields">
+              <div className="tb-field"><span>Email</span><a href="mailto:you@example.com">you@example.com</a></div>
+              <div className="tb-field"><span>Phone</span><p>+91 00000 00000</p></div>
+              <div className="tb-field"><span>GitHub</span><a href="https://github.com/yourhandle" target="_blank" rel="noreferrer">github.com/yourhandle</a></div>
+              <div className="tb-field"><span>LinkedIn</span><a href="https://linkedin.com/in/yourhandle" target="_blank" rel="noreferrer">linkedin.com/in/yourhandle</a></div>
+              <div className="tb-field"><span>Based in</span><p>India</p></div>
+              <div className="tb-field"><span>Status</span><p>Open to opportunities</p></div>
+            </div>
+            <div className="note">Placeholder contact details above — update with your real email, phone and profile links.</div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+function App(){
+  return (
+    <React.Fragment>
+      <Nav/>
+      <Hero/>
+      <Skills/>
+      <Experience/>
+      <Projects/>
+      <Gallery/>
+      <DebugLog/>
+      <Contact/>
+      <footer>DRAWING: PORTFOLIO — REV 1.0 — SCALE: NTS — Built with React</footer>
+    </React.Fragment>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+</script>
+</body>
+</html>

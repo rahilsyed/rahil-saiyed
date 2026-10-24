@@ -99,7 +99,7 @@ export const EN = {
         back: 'Wherever you shipped AI eBooks, PDF pipelines, or the desk you built it all from — swap this text for the real story behind the photos.'
       },
       {
-        tag: 'Internship', title: 'Mayora Infotech', subtitle: 'Backend Developer Intern',
+        tag: 'Hackathons', title: 'Various Hackathons', subtitle: 'Backend Developer Intern',
         photos: ['', ''],
         back: 'A team photo, a certificate, and a screenshot of your first deployed API — stack all of them here.'
       },
@@ -110,6 +110,37 @@ export const EN = {
       },
     ],
   },
+  DEBUG_LOG_DATA: {
+    title:'Debug Log',
+    subtitleFirst:'Issues traced',
+    subtitleLast:'resolved',
+    logItems: [
+      "Large GraphQL payload limitations",
+      "CloudFront caching misconfiguration",
+      "S3 bucket & object permissions",
+      "Lambda deployment package size",
+      "CORS across API and CDN layers",
+      "Puppeteer stability on AWS Lambda",
+      "Git cherry-pick conflicts",
+      "Next.js build failures",
+      "Authentication flow edge cases",
+      "AWS IAM policy scoping",
+    ]
+
+
+  },
+  FOOTER_DATA: {
+    title: 'Contact',
+    tag: 'Open to full-time roles',
+    heading: "Building cloud-native, AI-powered products — let's talk about where I'd fit.",
+    emailButton: 'Email me →',
+    emailLabel: 'Email',
+    phoneLabel: 'Phone',
+    basedInLabel: 'Based in',
+    location: 'India',
+    statusLabel: 'Status',
+    status: 'Open to opportunities',
+  }
 };
 
 export const DE = {
@@ -224,4 +255,33 @@ export const DE = {
     button1:'Builds ansehen ↓',
     button2:'Nehmen Sie Kontakt auf'
   },
+  DEBUG_LOG_DATA: {
+    title: 'Debug-Protokoll',
+    subtitleFirst: 'Probleme analysiert',
+    subtitleLast: 'gelöst',
+    logItems: [
+      "Einschränkungen bei großen GraphQL-Payloads",
+      "Fehlkonfiguration des CloudFront-Cachings",
+      "S3-Bucket- & Objektberechtigungen",
+      "Größe des Lambda-Deployment-Pakets",
+      "CORS über API- und CDN-Ebenen hinweg",
+      "Stabilität von Puppeteer auf AWS Lambda",
+      "Konflikte beim Git Cherry-Pick",
+      "Fehlgeschlagene Next.js-Builds",
+      "Randfälle im Authentifizierungsablauf",
+      "Eingrenzung von AWS-IAM-Richtlinien",
+    ]
+  },
+  FOOTER_DATA: {
+    title: 'Kontakt',
+    tag: 'Offen für Vollzeitstellen',
+    heading: 'Ich entwickle cloudnative, KI-gestützte Produkte — lassen Sie uns darüber sprechen, wo ich passen würde.',
+    emailButton: 'E-Mail senden →',
+    emailLabel: 'E-Mail',
+    phoneLabel: 'Telefon',
+    basedInLabel: 'Standort',
+    location: 'Indien',
+    statusLabel: 'Status',
+    status: 'Offen für neue Möglichkeiten',
+  }
 };
