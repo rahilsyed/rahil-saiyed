@@ -96,17 +96,17 @@ export const EN = {
       {
         tag: 'Workplace', title: 'Perception System', subtitle: 'Full Stack Developer — current',
         photos: ['/work_images/perception/ps1.jpeg', '/work_images/perception/ps4.jpeg', '/work_images/perception/ps3.jpeg'],
-        back: 'Wherever you shipped AI eBooks, PDF pipelines, or the desk you built it all from — swap this text for the real story behind the photos.'
+        back: 'Working as a Full Stack Developer / Associate Software Engineer, contributing to the development, enhancement, and maintenance of production-level web applications using React.js, Node.js, and AWS services.'
       },
       {
         tag: 'Hackathons', title: 'Various Hackathons', subtitle: 'Backend Developer Intern',
-        photos: ['', ''],
-        back: 'A team photo, a certificate, and a screenshot of your first deployed API — stack all of them here.'
+        photos: ['/work_images/hackathons/img1.png','/work_images/hackathons/img2.png', '/work_images/hackathons/img3.png'],
+        back: 'Participated in various hackathons throughout my college journey, where I learned the value of teamwork, collaboration, and working together to solve problems.'
       },
       {
         tag: 'Internship', title: 'Adani Green Energy', subtitle: 'Summer Intern',
         photos: ['/work_images/adani/ada2.jpeg', '/work_images/adani/ada1.jpeg', '/work_images/adani/ada3.jpeg', '/work_images/adani/ada4.jpeg', '/work_images/adani/ada5.jpeg', '/work_images/adani/ada6.jpeg', '/work_images/adani/ada7.jpeg'],
-        back: 'Your first taste of a real engineering team. Drop in photos from the site visit, the office, and the closing presentation.'
+        back: 'Contribute to the development and maintenance of Solar Assest Data Managment Platform, contributring towared backend development and maintence of production-grade API\'s  '
       },
     ],
   },
