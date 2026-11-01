@@ -2,10 +2,8 @@ import { useState } from 'react'
 
 const links = [
   { label: 'Overview', href: '/admin' },
-  { label: 'Projects', href: '/admin/projects' },
-  { label: 'Experience', href: '/admin/experience' },
-  { label: 'Skills', href: '/admin/skills' },
-  { label: 'Gallery', href: '/admin/gallery' },
+  { label: 'Blogs', href: '/admin/projects' },
+  { label: 'Project', href: '/admin/project' },
 ]
 
 const Sidebar = () => {

@@ -9,7 +9,7 @@ const ProtectedRoutes = ({ adminOnly }: { adminOnly: Boolean }) => {
     if (!user) {
         return <Navigate to='/admin/login' />
     }
-    if (!adminOnly) return <Navigate to='/admin/login' />
+    if (!adminOnly && !user) return <Navigate to='/admin/login' />
     return < Outlet />
 }
 

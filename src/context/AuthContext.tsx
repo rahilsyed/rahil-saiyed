@@ -14,7 +14,7 @@ export const AuthContext = createContext<AuthContextType |undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const [user, setUser] = React.useState(null);
-    const [loading, setLoading] = React.useState(false);
+    const [loading, setLoading] = React.useState(true);
 
 
     useEffect(() => {
