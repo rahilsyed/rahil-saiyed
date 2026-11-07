@@ -8,10 +8,15 @@ const Login = () => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [error, setError] = React.useState('')
-  const { login } = useAuth()
+  const { login} = useAuth()
   const navigate = useNavigate()
   console.log(email);
 
+  React.useEffect(()=>{
+    if(localStorage.getItem("token") &&localStorage.getItem("user")){
+      navigate('/admin/dashboard')
+    }
+  },[])
   const handleLogin = async (e: any) => {
     e.preventDefault()
     try {
