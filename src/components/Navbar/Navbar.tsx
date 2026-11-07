@@ -33,6 +33,7 @@ const Navbar = () => {
           <a href="#timeline">{t.timeLines}</a>
           <a href="#builds">{t.builds}</a>
           <a href="#debug">{language === CONSTANTS.LANGUAGE.GERMAN ? `Debug-Protokoll` : `Debug Log`}</a>
+          <a href="/blogs">{t.blogs}</a>
         </nav>
         <div className="nav-right">
           <div className="lang-switch" role="group" aria-label="Language">

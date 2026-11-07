@@ -5,6 +5,7 @@ export const EN = {
     timeLines: "Timeline",
     builds: "Builds",
     contact: "Contact",
+    blogs :"Blogs"
   },
   HERO_DATA:{
     designation:'Full Stack Developer — Cloud',
@@ -150,6 +151,7 @@ export const DE = {
     timeLines: "Zeitstrahl",
     builds: "Baut",
     contact: "Kontakt",
+    blogs :"Blogs"
   },
   SKILLS_DATA: {
     sheetTitle: 'Systeme & Werkzeuge',

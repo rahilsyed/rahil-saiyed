@@ -9,6 +9,7 @@ import Login from "./Pages/Login";
 import Dashboard from "./Pages/Dashboard";
 import BlogsPage from "./Pages/BlogsPage";
 import AdminLayout from "./layouts/AdminLayout";
+import Blogs from "./Pages/Blogs";
 function App() {
   return (
     <>
@@ -18,6 +19,7 @@ function App() {
             <AuthProvider>
               <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/blogs" element={<Blogs />} />
                 <Route path="/admin/login" element={<Login />} />
                 <Route element={<ProtectedRoutes adminOnly={true} />} >
                   <Route element={<AdminLayout />}>

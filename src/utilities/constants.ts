@@ -3,15 +3,6 @@ export const CONSTANTS = {
     GERMAN:'de',
     ENGLISH:'en'
   } as const,
-  NAV_BAR_DATA: {
-        title: `RAHIL-SAIYED / PORTFOLIO`,
-        systems: "Systems",
-        timeLines: "Timeline",
-        builds: "Builds",
-        contact: "Contact"
-    },
-
-
 }
 export const NODES = [
     { x: 40, y: 40, w: 120, h: 46, title: "CLIENT", sub: "React / Next.js" },
