@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import Sidebar from '../components/ui/Sidebar'
 import { _dashboardData } from '../data-services/dashboard';
 
 type StatItem = {
@@ -18,7 +17,7 @@ const Dashboard = () => {
     const fetchDashboardData = async () => {
         try {
             const response = await _dashboardData();
-            setData(response.data);
+            setData(response.data[0]);
         } catch (error) {
             console.error('Error fetching dashboard data:', error);
         }
@@ -27,11 +26,7 @@ const Dashboard = () => {
         fetchDashboardData();
     }, [])
     return (
-        <div className="min-h-screen flex">
-            <Sidebar />
-
-            {/* main content — offset by sidebar width on md+ */}
-            <main className="flex-1 md:ml-56 p-6 md:p-10">
+        <div>
 
                 {/* header */}
                 <div className="mb-10 mt-10 md:mt-0">
@@ -60,7 +55,6 @@ const Dashboard = () => {
                             </div>
                         ))}
                 </div>
-            </main>
         </div>
     )
 }

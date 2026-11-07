@@ -1,8 +1,9 @@
 import { useState } from 'react'
+import { Link, NavLink } from 'react-router-dom'
 
 const links = [
-  { label: 'Overview', href: '/admin' },
-  { label: 'Blogs', href: '/admin/projects' },
+  { label: 'Overview', href: '/admin/dashboard' },
+  { label: 'Blogs', href: '/admin/blogs' },
   { label: 'Project', href: '/admin/project' },
 ]
 
@@ -38,15 +39,19 @@ const Sidebar = () => {
 
         <nav className="flex flex-col gap-1 p-3 flex-1">
           {links.map(l => (
-            <a key={l.label} href={l.href}
-              className="font-mono text-[12px] tracking-wide text-[var(--text-muted)] px-3 py-2.5 rounded-sm hover:text-[var(--cyan)] hover:bg-[var(--cyan-dim)] transition-colors">
+            <NavLink key={l.label} to={l.href} onClick={() => setOpen(false)}
+              className={({ isActive }) =>
+                `font-mono text-[12px] tracking-wide px-3 py-2.5 rounded-sm hover:text-[var(--cyan)] hover:bg-[var(--cyan-dim)] transition-colors ${
+                  isActive ? 'text-[var(--cyan)] bg-[var(--cyan-dim)]' : 'text-[var(--text-muted)]'
+                }`
+              }>
               {l.label}
-            </a>
+            </NavLink>
           ))}
         </nav>
 
         <div className="p-4 border-t border-[var(--line-strong)]">
-          <a href="/" className="font-mono text-[11px] text-[var(--text-dim)] hover:text-[var(--cyan)] transition-colors">← Portfolio</a>
+          <Link to="/" className="font-mono text-[11px] text-[var(--text-dim)] hover:text-[var(--cyan)] transition-colors">← Portfolio</Link>
         </div>
       </aside>
     </>

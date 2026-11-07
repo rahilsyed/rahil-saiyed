@@ -14,10 +14,10 @@ api.interceptors.request.use((config) => {
 
 
 api.interceptors.response.use((res) => res, (err) => {
-    if (err.response.status === 401) {
+    if (err.response.data.status === false && err.response.data.message ===  "jwt expired") {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
-        window.location.href = "/login";
+        window.location.href = "/admin/login";
     }
     return Promise.reject(err)
 })

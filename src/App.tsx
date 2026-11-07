@@ -7,10 +7,12 @@ import ProtectedRoutes from "./routes/ProtectedRoutes";
 import { AuthProvider } from "./context/AuthContext";
 import Login from "./Pages/Login";
 import Dashboard from "./Pages/Dashboard";
+import BlogsPage from "./Pages/BlogsPage";
+import AdminLayout from "./layouts/AdminLayout";
 function App() {
   return (
     <>
-      <BrowserRouter>
+     <BrowserRouter>
         <ThemeProvider>
           <LanguageProvider>
             <AuthProvider>
@@ -18,7 +20,10 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/admin/login" element={<Login />} />
                 <Route element={<ProtectedRoutes adminOnly={true} />} >
-                  <Route path="/admin/dashboard" element={<Dashboard />} />
+                  <Route element={<AdminLayout />}>
+                    <Route path="/admin/dashboard" element={<Dashboard />} />
+                    <Route path="/admin/blogs" element={<BlogsPage />} />
+                  </Route>
                 </Route>
               </Routes>
             </AuthProvider>
