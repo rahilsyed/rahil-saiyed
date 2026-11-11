@@ -57,13 +57,13 @@ export const EXPERIENCE = [
 ];
 
 export const PROJECTS = [
-  {
-    title:"Lugelo Platform", desc:"A production platform spanning AI eBook generation, interactive storybooks, VR experiences, and a full user dashboard for media management.",
-    tags:["React","Node.js","AWS","GraphQL","DynamoDB","S3","CloudFront"],
-    challenge:"Synced frontend state, across long-running AI generation jobs without polling, using GraphQL subscriptions.",
-    link:'http://lugelo.com/',
-    image:'/projects_images/lgl-img.png'
-  },
+  // {
+  //   title:"Lugelo Platform", desc:"A production platform spanning AI eBook generation, interactive storybooks, VR experiences, and a full user dashboard for media management.",
+  //   tags:["React","Node.js","AWS","GraphQL","DynamoDB","S3","CloudFront"],
+  //   challenge:"Synced frontend state, across long-running AI generation jobs without polling, using GraphQL subscriptions.",
+  //   link:'http://lugelo.com/',
+  //   image:'/projects_images/lgl-img.png'
+  // },
   {
     title:"Monitor Mate", desc:"An AI workflow that generates complete HTML books through LLMs, tracks generation status.",
     tags:["LLM orchestration","GraphQL Subscriptions","Prompt engineering"],
@@ -74,6 +74,7 @@ export const PROJECTS = [
     title:"Medisync - Doctor Appointment Booking System", desc:"A full-stack web application designed to streamline the process of booking medical appointments online.",
     tags:["ReactJS","NodeJS","MongoDB","Express.js"],
     challenge:"Streamlined appointment booking and scheduling by implementing role-based access, real-time availability, and efficient doctor–patient management in a responsive full-stack platform.",
+    link:'https://medisync-frontend-six.vercel.app/',
     image:'/projects_images/Medisync.png'
   
   },
