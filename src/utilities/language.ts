@@ -196,13 +196,13 @@ export const DE = {
     backHint: '← Klicken zum Zurückgehen',
     confidential: 'Vertraulich',
     entries: [
-      {
-        title: 'Lugelo Platform',
-        desc: 'Eine Produktionsplattform für KI-eBook-Generierung, interaktive Bilderbücher, VR-Erlebnisse und ein vollständiges Benutzer-Dashboard für die Medienverwaltung.',
-        tags: ['React', 'Node.js', 'AWS', 'GraphQL', 'DynamoDB', 'S3', 'CloudFront'],
-        challenge: 'Frontend-Zustand über lang laufende KI-Generierungsjobs hinweg synchronisiert — ohne Polling, mit GraphQL-Subscriptions.',
-        link: 'http://lugelo.com/', image: '/projects_images/lgl-img.png'
-      },
+      // {
+      //   title: 'Lugelo Platform',
+      //   desc: 'Eine Produktionsplattform für KI-eBook-Generierung, interaktive Bilderbücher, VR-Erlebnisse und ein vollständiges Benutzer-Dashboard für die Medienverwaltung.',
+      //   tags: ['React', 'Node.js', 'AWS', 'GraphQL', 'DynamoDB', 'S3', 'CloudFront'],
+      //   challenge: 'Frontend-Zustand über lang laufende KI-Generierungsjobs hinweg synchronisiert — ohne Polling, mit GraphQL-Subscriptions.',
+      //   link: 'http://lugelo.com/', image: '/projects_images/lgl-img.png'
+      // },
       {
         title: 'Monitor Mate',
         desc: 'Ein KI-Workflow, der vollständige HTML-Bücher über LLMs generiert und den Generierungsstatus verfolgt.',
@@ -214,6 +214,7 @@ export const DE = {
         title: 'Medisync - Arzttermin-Buchungssystem',
         desc: 'Eine Full-Stack-Webanwendung zur Vereinfachung der Online-Buchung von Arztterminen.',
         tags: ['ReactJS', 'NodeJS', 'MongoDB', 'Express.js'],
+        link:'https://medisync-frontend-six.vercel.app/',
         challenge: 'Terminbuchung und -planung optimiert durch rollenbasierte Zugriffskontrolle, Echtzeit-Verfügbarkeit und effizientes Arzt-Patienten-Management.',
         image: '/projects_images/Medisync.png'
       },
