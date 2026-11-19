@@ -7,12 +7,14 @@ import Projects from "../components/Projects/Projects";
 import Gallery from "../components/Gallery/Gallery";
 import DebugLog from "../components/DebugLog/DebugLog";
 import Footer from "../components/Footer/Footer";
+import TechBelt from "../components/TechBelts/TechBelt";
 
 const Home = () => {
   return (
     <React.Fragment>
       <Navbar />
       <Hero />
+      <TechBelt />
       <Skills />
       <Experience />
       <Projects />
