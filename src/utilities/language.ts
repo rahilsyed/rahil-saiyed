@@ -236,17 +236,17 @@ export const DE = {
       {
         tag: 'Arbeitsplatz', title: 'Perception System', subtitle: 'Full Stack Entwickler — aktuell',
         photos: ['/work_images/perception/ps1.jpeg', '/work_images/perception/ps4.jpeg', '/work_images/perception/ps3.jpeg'],
-        back: 'Wo auch immer Sie KI-eBooks, PDF-Pipelines oder den Schreibtisch, von dem aus Sie alles gebaut haben, verschickt haben — ersetzen Sie diesen Text durch die echte Geschichte hinter den Fotos.'
+        back: 'Tätig als Full Stack Entwickler / Associate Software Engineer und beteiligt an der Entwicklung, Weiterentwicklung und Wartung produktiver Webanwendungen mit React.js, Node.js und AWS-Diensten.'
       },
       {
-        tag: 'Praktikum', title: 'Mayora Infotech', subtitle: 'Backend-Entwickler Praktikant',
-        photos: ['', ''],
-        back: 'Ein Teamfoto, ein Zertifikat und ein Screenshot Ihrer ersten bereitgestellten API — stapeln Sie alles hier.'
+        tag: 'Hackathons', title: 'Verschiedene Hackathons', subtitle: 'Backend-Entwickler Praktikant',
+        photos: ['/work_images/hackathons/img1.png', '/work_images/hackathons/img2.png', '/work_images/hackathons/img3.png'],
+        back: 'Während meines Studiums habe ich an verschiedenen Hackathons teilgenommen und dabei gelernt, wie wertvoll Teamarbeit, Zusammenarbeit und gemeinsames Problemlösen sind.'
       },
       {
         tag: 'Praktikum', title: 'Adani Green Energy', subtitle: 'Sommerpraktikant',
         photos: ['/work_images/adani/ada2.jpeg', '/work_images/adani/ada1.jpeg', '/work_images/adani/ada3.jpeg', '/work_images/adani/ada4.jpeg', '/work_images/adani/ada5.jpeg', '/work_images/adani/ada6.jpeg', '/work_images/adani/ada7.jpeg'],
-        back: 'Ihr erster Einblick in ein echtes Ingenieurteam. Fügen Sie Fotos vom Standortbesuch, dem Büro und der Abschlusspräsentation ein.'
+        back: 'Mitarbeit an der Entwicklung und Wartung der Solar Asset Data Management Platform, mit Schwerpunkt auf Backend-Entwicklung und der Pflege produktionsreifer APIs.'
       },
     ],
   },
