@@ -295,3 +295,50 @@
   .flip-btn.back-btn{align-self:flex-start;}
   .gallery-note{margin-top:22px;}
 }
+
+
+/* Tech Belt */
+.belt-band{padding:56px 0; border-bottom:1px dashed var(--grid-line);}
+  .belt-row + .belt-row{margin-top:34px;}
+  .belt-label{display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-dim); margin-bottom:12px;}
+  .belt-label b{color:var(--cyan); font-weight:500;}
+  .belt{
+    position:relative; overflow:hidden; padding:14px 0;
+    border-top:1px solid var(--line-strong); border-bottom:1px solid var(--line-strong);
+    -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+            mask-image:linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+  }
+  /* roller ticks on the rails */
+  .belt::before, .belt::after{
+    content:""; position:absolute; left:0; right:0; height:5px; pointer-events:none;
+    background:repeating-linear-gradient(90deg, var(--line-strong) 0 1px, transparent 1px 24px);
+    animation:belt-ticks 1.6s linear infinite;
+  }
+  .belt::before{top:0;}
+  .belt::after{bottom:0;}
+  .belt-track{display:flex; width:max-content; animation:belt-scroll var(--belt-dur, 40s) linear infinite; will-change:transform;}
+  .belt-group{display:flex; gap:14px; padding-right:14px; flex-shrink:0;}
+  .belt:hover .belt-track, .belt:hover::before, .belt:hover::after,
+  .belt:focus-within .belt-track, .belt:focus-within::before, .belt:focus-within::after{animation-play-state:paused;}
+  @keyframes belt-scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+  @keyframes belt-ticks{ from{background-position-x:0;} to{background-position-x:-24px;} }
+
+  .belt-chip{
+    display:flex; align-items:center; gap:12px; padding:11px 18px 11px 12px;
+    border:1px solid var(--line-strong); border-radius:3px; background:var(--bg-panel);
+    transition:border-color .2s, transform .2s, box-shadow .2s; cursor:default; white-space:nowrap;
+  }
+  .belt-chip:hover, .belt-chip:focus-visible{border-color:var(--cyan); transform:translateY(-3px); box-shadow:0 8px 18px -10px var(--cyan);}
+  .belt-badge{
+    width:34px; height:34px; border-radius:2px; display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-mono); font-size:12px; font-weight:600; color:var(--accent, var(--cyan));
+    border:1px solid var(--accent, var(--cyan)); background:var(--accent-dim, var(--cyan-dim));
+  }
+  .belt-chip.aws{--accent:var(--amber); --accent-dim:var(--amber-dim);}
+  .belt-name{font-family:var(--font-display); font-size:15px; font-weight:600; line-height:1.2;}
+  .belt-cat{font-family:var(--font-mono); font-size:10px; color:var(--text-dim); letter-spacing:0.06em; text-transform:uppercase;}
+  @media (prefers-reduced-motion: reduce){
+    .belt-track, .belt::before, .belt::after{animation:none;}
+    .belt{overflow-x:auto; -webkit-mask-image:none; mask-image:none;}
+    .belt-group[aria-hidden="true"]{display:none;}
+  }
