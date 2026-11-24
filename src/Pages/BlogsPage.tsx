@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { _fetchBlogs } from '../data-services/blogs';
 import { toast } from 'react-toastify';
+import Modal from '../components/BlogModal/Modal';
 
 type Blog = {
     _id: string;
@@ -15,7 +16,10 @@ type Blog = {
 
 const BlogsPage = () => {
     const [data, setData] = React.useState<Blog[] | null>(null);
-
+    const [isModalOpen, setIsModalOpen]= React.useState(false);
+    const toggleModalState = ()=>{
+        setIsModalOpen(true);
+    }
     const fetchBlogs = async () => {
         try {
             const response = await _fetchBlogs();
@@ -35,7 +39,7 @@ const BlogsPage = () => {
                     <div className="sheet-num mb-1">BLOGS</div>
                     <h1 className="font-display text-3xl font-semibold">My <span className="text-[var(--cyan)]">Blogs</span></h1>
                 </div>
-                <button className="btn btn-primary">+ New Blog</button>
+                <button className="btn btn-primary" onClick={toggleModalState}>+ New Blog</button>
             </div>
 
             {/* blog cards */}
@@ -61,6 +65,7 @@ const BlogsPage = () => {
                     </div>
                 ))}
             </div>
+        {isModalOpen && <Modal setIsModalOpen={setIsModalOpen}/>}
         </div>
     )
 }
